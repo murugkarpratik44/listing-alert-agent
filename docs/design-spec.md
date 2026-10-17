@@ -551,3 +551,4 @@ Found while building v0.1; each is reflected in the code and skills.
 | 2026-10-17 | Benchmark kept at 2025 Q4: CSO table RIQ02 has no newer quarter (last updated 14 May 2026). RTB Rent Index reports use a different, standardised measure and are not mixed in. The maintenance check now reads the latest quarter from the CSO API. |
 | 2026-10-17 | LinkedIn content framed as a personal project in the first person; drafts only, nothing posted without the author. |
 | 2026-10-17 | Directory validation: the policy hold "Uses a credential from the user's machine" (ORS_API_KEY) is accepted and explained in the plugin README, because sensitive userConfig values cannot reach the script. Listing icon and links added before the first submission. |
+| 2026-10-17 | Submitted to the plugin directory (v0.3.0, commit 7a2100f) with the GitHub push webhook. Plugin and state template repositories made public. Publishing waits for Anthropic's review. |
