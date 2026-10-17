@@ -10,5 +10,17 @@
   "homepage": "https://github.com/murugkarpratik44/listing-alert-agent",
   "repository": "https://github.com/murugkarpratik44/listing-alert-agent",
   "license": "MIT",
-  "keywords": ["alerts", "rentals", "property", "listings", "gmail", "travel-time", "decision-support"]
+  "keywords": [
+    "alerts",
+    "rentals",
+    "property",
+    "listings",
+    "gmail",
+    "travel-time",
+    "decision-support"
+  ],
+  "icon": "./.claude-plugin/icon.png",
+  "documentationUrl": "https://github.com/murugkarpratik44/listing-alert-agent/blob/main/docs/quickstart.md",
+  "supportUrl": "https://github.com/murugkarpratik44/listing-alert-agent/issues",
+  "privacyPolicyUrl": "https://github.com/murugkarpratik44/listing-alert-agent/blob/main/docs/privacy.md"
 }
