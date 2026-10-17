@@ -57,6 +57,17 @@ Then ask Claude: "Set up listing alerts". Claude app (Chat and Cowork) instructi
 | Runs | `skills/run-alerts/scripts/laa.py`, a readable Python script that Claude runs for the arithmetic (rent conversion, scoring, travel lookup, duplicates, cost estimate, dashboard export). No hooks, no MCP servers, no background processes, no package installs. |
 | Never | Visits, searches or scrapes listing websites; contacts landlords or agents; stores their names, phone numbers or email addresses; sends email to anyone except you. |
 
+## Why the travel-time key comes from an environment variable
+
+Travel times are optional. If you want them, you create a free openrouteservice.org key and set it as `ORS_API_KEY` in your own environment. During setup, the bundled script `skills/run-alerts/scripts/laa.py` reads it and sends it only to `api.openrouteservice.org`, the service that issued it.
+
+It is not a `userConfig` option, for two reasons:
+
+- Claude Code does not pass sensitive `userConfig` values to skills or to the commands Claude runs, so the script could not receive one.
+- A non-sensitive option would store the key unmasked and show it in the conversation.
+
+The key is never written to a file, an email, a commit or the chat.
+
 ## Privacy and terms of use
 
 - Your settings and history live in storage you own (private GitHub repository, Google Drive folder or local folder), not with the plugin author.
