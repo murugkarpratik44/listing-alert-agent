@@ -52,8 +52,10 @@ Then ask Claude: "Set up listing alerts". Claude app (Chat and Cowork) instructi
 | Reads | Gmail messages from the alert sender addresses you configure; your own state storage; files inside this plugin |
 | Writes | Your own state storage (private GitHub repository, Google Drive folder or local folder: settings, listing history, run log, your feedback); two Gmail labels: `Listing Alerts/Processed`, `Listing Alerts/Could not read`; optionally a Gmail draft of an enquiry, which you send yourself; optionally your private claude.ai dashboard page |
 | Sends | Email to you only: one alert per run when there is something new, and one weekly summary (optionally copied to one address you choose) |
-| Fetches | During setup only, and only with your key: openrouteservice.org geocoding and travel-time matrix for your configured places. Never listing websites. |
-| Runs | `skills/run-alerts/scripts/laa.py`, a Python script that does the arithmetic (rent conversion, scoring, travel lookup, duplicates). No hooks, no MCP servers, no background processes. |
+| Fetches | During setup only, and only if you set the `ORS_API_KEY` environment variable: the script reads that key from your environment and sends it, with the names and coordinates of your configured places, only to `api.openrouteservice.org` (geocoding and travel-time matrix). The key is never written to a file, an email or the chat. Never listing websites. |
+| Optional dashboard | If you ask for one, a private page in your own claude.ai account showing listing facts, statuses and run counts from your state storage. It is refreshed by the alert run and is private until you share it. |
+| Runs | `skills/run-alerts/scripts/laa.py`, a readable Python script that Claude runs for the arithmetic (rent conversion, scoring, travel lookup, duplicates, cost estimate, dashboard export). No hooks, no MCP servers, no background processes, no package installs. |
+| Never | Visits, searches or scrapes listing websites; contacts landlords or agents; stores their names, phone numbers or email addresses; sends email to anyone except you. |
 
 ## Privacy and terms of use
 
