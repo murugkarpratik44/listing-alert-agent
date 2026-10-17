@@ -6,7 +6,7 @@
 | Author | Pratik Murugkar (`murugkarpratik44`), drafted with Claude |
 | Date | 2026-10-17 |
 | Licence | MIT |
-| Repository | `github.com/murugkarpratik44/listing-alert-agent` (private until launch) |
+| Repository | `github.com/murugkarpratik44/listing-alert-agent` (public) |
 
 ---
 
@@ -198,7 +198,7 @@ Asked one block at a time, with sensible defaults shown for confirmation. The fu
 | 1. Goal | What are you looking for? (rent, buy, job, car, other) · Country · By when? | Rent, Ireland, by 1 December |
 | 2. The thing | Types and sizes · must-haves · nice-to-haves · deal-breakers | 1–2 bed apartment or house; must have own bathroom each; nice: parking; never: ground floor |
 | 3. Places that matter | Each place: name, address or Eircode/postcode, how often, how you travel, longest trip you'd accept, importance | Office, Galway city, 5 days, car, 35 min, high; Partner's work, Ennis, 3 days, car, 45 min, medium |
-| 4. Search areas | Areas to watch, or "anywhere within my travel limits" | Within limits, plus Limerick city for hybrid weeks |
+| 4. Search areas | Areas to watch, or "anywhere within my travel limits" | Within limits, plus Sligo town for hybrid weeks |
 | 5. Money | Budget model: alone or sharing; per-person rules; bills included or not; stretch tolerance | €1,000 each, max 2 people, no shared bedroom, stretch 10% |
 | 6. Alerts | Instant phone alerts for which tier · digest timing · quiet hours · share digest with someone | Act-now only; Sunday 10:00; 23:00–07:00 quiet |
 | 7. Sources | Pack suggests main sites; user confirms which they use; guided alert setup per site | Daft.ie, MyHome.ie |
@@ -546,7 +546,7 @@ Found while building v0.1; each is reflected in the code and skills.
 | 2026-10-17 | Monthly maintenance: one scheduled task on the 1st of each month emails the maintainer and opens a GitHub issue. Report only; it changes nothing. |
 | 2026-10-17 | Private dashboard built now (Phase 4) from the Dashboard artifact type, fed by JSON files the alert run uploads, because the GitHub connector cannot read private repositories for live queries. |
 | 2026-10-17 | Own energy bill can replace the BER estimate (`costs.energy_monthly_eur`). |
-| 2026-10-17 | Phase 4 (v0.3.0) approved. The author's €50–75 energy figure is his own share, not split. Phase 5 to start. |
+| 2026-10-17 | Phase 4 (v0.3.0) approved. A user's own energy bill is treated as their share, not split between occupants. Phase 5 to start. |
 | 2026-10-17 | Phase 5 approved. Public launch uses a fresh history: the current files become the first commit of a new repository and the old repository is kept private as an archive. |
 | 2026-10-17 | Benchmark kept at 2025 Q4: CSO table RIQ02 has no newer quarter (last updated 14 May 2026). RTB Rent Index reports use a different, standardised measure and are not mixed in. The maintenance check now reads the latest quarter from the CSO API. |
 | 2026-10-17 | LinkedIn content framed as a personal project in the first person; drafts only, nothing posted without the author. |
