@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/murugkarpratik44/listing-alert-agent/schemas/places.schema.json",
+  "title": "listing-alert-agent places (config/places.yaml)",
+  "type": "object",
+  "required": ["anchors"],
+  "additionalProperties": false,
+  "properties": {
+    "anchors": {
+      "type": "array",
+      "description": "Places that matter to the user (work, school, family). Travel times are measured to these.",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "address"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "label": {"type": "string", "description": "Short name shown in alerts, e.g. Work."},
+          "address": {"type": "string", "description": "Address, postcode or landmark. Used for directions links."},
+          "lat": {"type": ["number", "null"]},
+          "lon": {"type": ["number", "null"]},
+          "modes": {"type": "array", "items": {"enum": ["driving", "walking", "bicycling", "transit"]}, "minItems": 1},
+          "max_minutes": {"type": "number", "exclusiveMinimum": 0},
+          "trips_per_week": {"type": "number", "minimum": 0},
+          "importance": {"enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "search_places": {
+      "type": "array",
+      "description": "Towns, districts or postcodes listings may come from. Travel times are cached for each.",
+      "items": {
+        "oneOf": [
+          {"type": "string"},
+          {
+            "type": "object",
+            "required": ["name"],
+            "additionalProperties": false,
+            "properties": {
+              "name": {"type": "string"},
+              "region": {"type": "string"},
+              "lat": {"type": ["number", "null"]},
+              "lon": {"type": ["number", "null"]}
+            }
+          }
+        ]
+      }
+    }
+  }
+}

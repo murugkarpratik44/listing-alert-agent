@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Demo GIF stage</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0B5D56;--ink:#142420;--muted:#4A5A55;--bg:#F4F6F4;--line:#D5DDD9;--mint:#DCEFEB}
+*{box-sizing:border-box}
+html,body{margin:0;width:800px;height:500px;overflow:hidden;background:var(--bg);font-family:'Source Sans 3',sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;opacity:0}
+h1,h2,.sora{font-family:'Sora',sans-serif}
+/* title */
+#s1{display:flex;flex-direction:column;justify-content:center;padding:0 64px;gap:14px}
+#s1 .kick{font-family:'Sora';font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+#s1 h1{margin:0;font-size:44px;line-height:1.08;font-weight:700}
+#s1 p{margin:0;font-size:21px;color:#33443F;max-width:600px;line-height:1.4}
+/* run */
+#s2{display:grid;grid-template-columns:330px 1fr;gap:22px;padding:34px 36px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px;display:flex;flex-direction:column;gap:9px}
+.ptitle{font-family:'Sora';font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between}
+.mail{border:1px solid #E3E8E6;border-radius:10px;padding:9px 11px;font-size:14px;line-height:1.3;opacity:0}
+.mail b{display:block;font-size:14px}
+.mail span{color:var(--muted);font-size:13px}
+.tag{font-size:11px;background:#E6E9E8;color:#33443F;border-radius:999px;padding:2px 8px;font-family:'Source Sans 3';letter-spacing:0;text-transform:none;font-weight:600}
+.bubble{align-self:flex-end;background:var(--ink);color:#fff;border-radius:14px 14px 4px 14px;padding:10px 14px;font-size:17px;opacity:0}
+.step{display:flex;gap:10px;align-items:flex-start;font-size:16.5px;line-height:1.35;opacity:0}
+.tick{flex:0 0 22px;height:22px;border-radius:11px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.tick.warn{background:#B45309}
+.typed{white-space:nowrap;overflow:hidden;display:inline-block;vertical-align:bottom}
+/* email */
+#s3{display:grid;grid-template-columns:1fr 470px;gap:26px;padding:28px 34px 0 40px}
+.cap{display:flex;flex-direction:column;justify-content:center;gap:12px}
+.cap .k{font-family:'Sora';font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.cap .line{font-family:'Sora';font-size:25px;line-height:1.25;font-weight:600;position:absolute;width:250px;opacity:0}
+.cap .holder{position:relative;height:130px}
+.frame{position:relative;height:472px;border-radius:16px 16px 0 0;border:1px solid #C9D3CF;border-bottom:0;overflow:hidden;background:#F2F4F5;box-shadow:0 10px 30px rgba(20,36,32,.10)}
+.frame img{position:absolute;left:0;top:0;width:470px}
+/* end */
+#s4{display:flex;flex-direction:column;justify-content:center;padding:0 64px;gap:18px;background:var(--ink);color:#fff}
+#s4 h2{margin:0;font-size:36px;line-height:1.15}
+#s4 .row{display:flex;gap:12px;flex-wrap:wrap}
+#s4 .pill{border:1px solid #3B4D48;border-radius:999px;padding:8px 14px;font-size:17px;color:#DCE6E3}
+#s4 .url{font-family:'Sora';font-size:18px;color:#9FD8CF}
+</style>
+</head>
+<body>
+<section class="scene" id="s1">
+  <div class="kick">Listing Alert Agent · Claude plugin</div>
+  <h1>Your listing alerts in.<br>One ranked alert out.</h1>
+  <p>A dry run on the sample emails that ship with the plugin.</p>
+</section>
+
+<section class="scene" id="s2">
+  <div class="panel">
+    <div class="ptitle"><span>Gmail · alert emails</span><span class="tag">sample</span></div>
+    <div class="mail" id="m1"><b>MyHome.ie</b><span>New properties match your saved search</span></div>
+    <div class="mail" id="m2"><b>Daft.ie</b><span>New rentals in Maynooth and Leixlip</span></div>
+    <div class="mail" id="m3"><b>Daft.ie</b><span>New rentals in Celbridge</span></div>
+    <div class="mail" id="m4"><b>MyHome.ie</b><span>New properties match your saved search</span></div>
+    <div class="mail" id="m5" style="color:var(--muted);font-size:13px;border-style:dashed">+ 3 more</div>
+  </div>
+  <div class="panel" style="gap:12px;justify-content:flex-start">
+    <div class="ptitle"><span>Claude</span></div>
+    <div class="bubble" id="b1"><span class="typed" id="typed">Run my listing alerts now</span></div>
+    <div class="step" id="st1"><div class="tick">✓</div><div>Read <b>7 alert emails</b>: 9 listings</div></div>
+    <div class="step" id="st2"><div class="tick">✓</div><div>Merged <b>1 listing</b> posted on two sites</div></div>
+    <div class="step" id="st3"><div class="tick">✓</div><div>Ruled out <b>3</b>: outside your areas, a studio, ground floor</div></div>
+    <div class="step" id="st4"><div class="tick">✓</div><div>Drive times, budget tiers, market comparison, monthly cost</div></div>
+    <div class="step" id="st5"><div class="tick warn">!</div><div><b>1 possible scam</b> flagged: rent 48% below the area average</div></div>
+    <div class="step" id="st6"><div class="tick">✓</div><div>Emailed you <b>5 listings, 2 to act on now</b></div></div>
+  </div>
+</section>
+
+<section class="scene" id="s3">
+  <div class="cap">
+    <div class="k">The alert email</div>
+    <div class="holder">
+      <div class="line" id="c1">Ranked by fit, with the reasons</div>
+      <div class="line" id="c2">Real drive times, with directions</div>
+      <div class="line" id="c3">Your monthly cost, and the market average</div>
+      <div class="line" id="c4">Possible scams flagged, never hidden</div>
+      <div class="line" id="c5">Near misses in one line each</div>
+    </div>
+  </div>
+  <div class="frame"><img id="mailimg" src="alert-full.png" alt=""></div>
+</section>
+
+<section class="scene" id="s4">
+  <h2>Email only. It never visits<br>or scrapes listing sites.</h2>
+  <div class="row"><div class="pill">Your data stays in your account</div><div class="pill">Ireland pack included</div><div class="pill">Claude app and Claude Code</div></div>
+  <div class="url">github.com/murugkarpratik44/listing-alert-agent</div>
+</section>
+
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (x,a=0,b=1) => Math.max(a, Math.min(b, x));
+const ease = x => x<.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2;
+const fade = (t, a, b, d=.4) => clamp((t-a)/d) * (1 - clamp((t-(b-d))/d));   // in at a, out ending at b
+function show(el, o, dy=8){ el.style.opacity = o; el.style.transform = `translateY(${(1-o)*dy}px)`; }
+const SCENES = [["s1",0,3.2],["s2",3,10.6],["s3",10.4,21.4],["s4",21.2,25]];
+window.DURATION = 25;
+window.render = function(t){
+  for (const [id,a,b] of SCENES) $(id).style.opacity = (a===0? (1-clamp((t-(b-.4))/.4)) : fade(t,a,b));
+  // scene 2
+  ["m1","m2","m3","m4","m5"].forEach((id,i)=>show($(id), clamp((t-3.3-i*.18)/.3)));
+  show($("b1"), clamp((t-4.2)/.3));
+  const txt = "Run my listing alerts now"; const n = Math.round(clamp((t-4.3)/.9)*txt.length);
+  $("typed").textContent = txt.slice(0, Math.max(n,1));
+  ["st1","st2","st3","st4","st5","st6"].forEach((id,i)=>show($(id), clamp((t-5.6-i*.75)/.3)));
+  // scene 3: scroll the email
+  const img = $("mailimg"); const h = img.naturalHeight * (470/ (img.naturalWidth||640)); const maxY = Math.max(0, h - 472);
+  const keys = [[10.4,0],[12.8,0],[13.6,110],[15.2,110],[16.0,220],[17.4,220],[18.2,420],[19.4,420],[20.3,maxY],[22,maxY]];
+  let y = 0;
+  for (let i=0;i<keys.length-1;i++){ const [t0,y0]=keys[i],[t1,y1]=keys[i+1]; if (t>=t0 && t<=t1){ y = y0 + (y1-y0)*ease(clamp((t-t0)/(t1-t0))); break; } if (t>t1) y = y1; }
+  img.style.transform = `translateY(${-y}px)`;
+  const caps = [[10.6,13.5],[13.4,15.9],[15.8,17.9],[17.8,19.9],[19.8,21.3]];
+  caps.forEach(([a,b],i)=>show($("c"+(i+1)), fade(t,a,b,.35), 10));
+};
+window.render(0);
+</script>
+</body>
+</html>

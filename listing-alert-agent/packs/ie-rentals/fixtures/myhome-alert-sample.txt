@@ -1,0 +1,22 @@
+SYNTHETIC TEST EMAIL – invented listings, addresses and links. Structure matches MyHome.ie alerts seen on 2026-10-16.
+From: MyHome.ie <notifications@myhome.ie>
+Subject: 1 Example Court, Maynooth, Co. Kildare - €2,100 / month
+Date: Sat, 17 Oct 2026 08:30:00 +0100
+
+Property Alert | 17 October 2026
+
+MyHome.ie found new matches for your "Kildare 1-2 bed" saved search
+
+## €2,100 / month
+Apartment 1, Example Court, Maynooth, Co. Kildare
+| [photo] | 2 Bed | 2 Bath | 68 m² | Apartment |
+[View property](https://r.example.awstrack.me/L0/https:%2F%2Fwww.myhome.ie%2Frentals%2Fbrochure%2F1-example-court-maynooth%2F9000001%3Futm_source%3Dalert%26utm_medium%3Demail/1/abc)
+Parking space included. BER: B3
+
+## €530 / week
+22 Demo Street, Dublin 8
+| [photo] | 2 Bed | 1 Bath | 61 m² | Apartment |
+[View property](https://r.example.awstrack.me/L0/https:%2F%2Fwww.myhome.ie%2Frentals%2Fbrochure%2F22-demo-street-dublin-8%2F9000005%3Futm_source%3Dalert/1/def)
+Contact: Example Lettings, 01 000 0000, lettings@example.ie
+
+Manage your alerts | Unsubscribe

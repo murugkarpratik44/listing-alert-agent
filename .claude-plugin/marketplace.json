@@ -1,0 +1,17 @@
+{
+  "name": "listing-alert-agent",
+  "owner": {
+    "name": "Pratik Murugkar"
+  },
+  "metadata": {
+    "description": "Listing Alert Agent: ranked, explained listing alerts from your own alert emails."
+  },
+  "plugins": [
+    {
+      "name": "listing-alert-agent",
+      "source": "./listing-alert-agent",
+      "description": "Turns listing-site alert emails into ranked, explained, map-accurate alerts. Email-only: never scrapes.",
+      "category": "productivity"
+    }
+  ]
+}

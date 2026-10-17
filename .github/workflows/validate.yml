@@ -1,0 +1,40 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install pyyaml==6.0.2 jsonschema==4.23.0
+
+      - name: Unit, schema and pack tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Pack checks
+        run: python tools/check_packs.py
+
+      - name: Plugin folder checks (directory rules, secrets, personal data, runtime manifest)
+        run: python tools/check_plugin_folder.py
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Claude plugin validate
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate .
+          claude plugin validate ./listing-alert-agent

@@ -1,0 +1,52 @@
+# Default inputs for the monthly cost estimate (Ireland). Setup asks the user first;
+# these are used only for values the user does not give. Every figure has a source and date.
+checked: 2026-10-17
+energy:
+  price_eur_per_kwh: 0.13
+  price_basis: "Natural gas, band D2 (5,556 to 55,556 kWh a year), delivered cost incl. VAT, excl. standing charge"
+  source: "SEAI Domestic Fuel Cost Comparison, 1 July 2026"
+  url: https://www.seai.ie/publications/Domestic-Fuel-Cost-Comparison.pdf
+  alternatives:
+    electricity_band_dc_eur_per_kwh: 0.4042   # 2,500 to 5,000 kWh a year, same source
+    electricity_band_dd_eur_per_kwh: 0.3438   # 5,000 to 15,000 kWh a year, same source
+  caution: >-
+    A BER figure is primary energy per m² per year under standard use (heating, hot water, ventilation, lighting),
+    not a bill. The estimate multiplies the band's midpoint by the floor area and the unit price, so treat it
+    as a rough guide for comparing homes, not a forecast.
+ber_bands:
+  # kWh/m²/yr. Previous scale: certificates issued on or before 23 May 2026 (valid for 10 years).
+  # Source: CSO, Domestic Building Energy Ratings Q2 2026, background notes, Table A
+  # https://www.cso.ie/en/releasesandpublications/ep/p-dber/domesticbuildingenergyratingsquarter22026/backgroundnotes/
+  previous_scale:
+    A1: [0, 25]
+    A2: [25, 50]
+    A3: [50, 75]
+    B1: [75, 100]
+    B2: [100, 125]
+    B3: [125, 150]
+    C1: [150, 175]
+    C2: [175, 200]
+    C3: [200, 225]
+    D1: [225, 260]
+    D2: [260, 300]
+    E1: [300, 340]
+    E2: [340, 380]
+    F: [380, 450]
+    G: [450, 550]          # open-ended band; 550 used as a nominal upper bound
+  # Simplified scale: certificates issued on or after 24 May 2026. Same CSO source, Table B
+  # (A0 ≤ 42 and meets zero-emission building criteria).
+  simplified_scale:
+    A0: [0, 42]
+    A: [0, 75]
+    B: [75, 150]
+    C: [150, 225]
+    D: [225, 275]
+    E: [275, 325]
+    F: [325, 375]
+    G: [375, 450]          # open-ended band; 450 used as a nominal upper bound
+commute:
+  car_eur_per_km: 0.3179
+  car_basis: "Civil service motor travel rate, 1,201-1,500 cc, 5,501-25,000 km a year (Band 3). A mileage reimbursement rate, used as a proxy for the cost of driving."
+  source: "Revenue, Civil Service rates, effective 1 September 2022"
+  url: https://www.revenue.ie/en/employing-people/employee-expenses/travel-and-subsistence/civil-service-rates.aspx
+  transit: "No default: ask the user for their fare, or show none."

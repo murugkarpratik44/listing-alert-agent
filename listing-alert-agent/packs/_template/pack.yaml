@@ -1,0 +1,29 @@
+# Pack template. Copy this folder to packs/<country>-<domain> (for example uk-rentals, ie-jobs)
+# and fill in every field. See README.md in this folder.
+id: xx-domain                       # lower case, hyphenated, unique
+title: Country – domain             # shown to users during setup
+domain: rentals                     # rentals | sales | jobs | vehicles | other
+country: XX                         # ISO 3166-1 alpha-2
+currency: XXX                       # ISO 4217
+version: 0.1.0
+maintainer: your-github-username
+sources:                            # sites whose saved-search alerts this pack can read
+  - id: example
+    name: Example.com
+    senders: ["alerts@example.com"]  # exact addresses once known; *@example.com until then
+    silence_hours: 48               # warn when no alert arrives for this long
+    alert_setup: sources/example.md # user steps to create saved-search email alerts
+    parser: parsers/example.md      # where each field sits in the alert email
+    terms_checked: YYYY-MM-DD       # date you read the site's terms of use
+places:
+  gazetteer: places/README.md       # how to choose search places for this country
+benchmark:                          # optional: open market averages for "value vs market"
+  file: benchmark/example.csv       # columns: location,property_type,bedrooms,value,n_periods
+  source: "Publisher, table name"
+  licence: CC BY 4.0                # must allow redistribution
+  url: https://example.org/table
+  checked: YYYY-MM-DD
+rent:
+  periods: {week: "x 52 / 12", month: "as stated"}
+notes: {}
+fixtures: fixtures/                 # synthetic alert emails + expected-extraction.json

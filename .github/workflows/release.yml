@@ -1,0 +1,44 @@
+name: release
+
+# Creates a GitHub release (and its tag) whenever the version in plugin.json changes on main.
+# Notes come from the matching CHANGELOG.md section. Re-running is safe: an existing release is left alone.
+on:
+  push:
+    branches: [main]
+    paths: ["listing-alert-agent/.claude-plugin/plugin.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Read version and release notes
+        id: v
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          version = json.load(open("listing-alert-agent/.claude-plugin/plugin.json"))["version"]
+          text = open("CHANGELOG.md", encoding="utf-8").read()
+          m = re.search(rf"^## {re.escape(version)}\b.*?$(.*?)(?=^## |\Z)", text, re.S | re.M)
+          if not m:
+              raise SystemExit(f"CHANGELOG.md has no section for {version}")
+          open("release-notes.md", "w", encoding="utf-8").write(m.group(1).strip() + "\n")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"version={version}\n")
+          PY
+
+      - name: Create the release if it does not exist
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.v.outputs.version }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo "Release v$VERSION already exists"
+          else
+            gh release create "v$VERSION" --target "$GITHUB_SHA" --title "listing-alert-agent v$VERSION" --notes-file release-notes.md
+          fi

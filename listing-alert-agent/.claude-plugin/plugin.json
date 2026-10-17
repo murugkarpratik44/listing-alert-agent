@@ -1,0 +1,14 @@
+{
+  "name": "listing-alert-agent",
+  "displayName": "Listing Alert Agent",
+  "version": "0.3.0",
+  "description": "Turns the saved-search alert emails you already get from listing sites into ranked, explained alerts with real travel times, budget tiers and market comparison. Email-only: it never visits or scrapes listing sites.",
+  "author": {
+    "name": "Pratik Murugkar",
+    "url": "https://github.com/murugkarpratik44"
+  },
+  "homepage": "https://github.com/murugkarpratik44/listing-alert-agent",
+  "repository": "https://github.com/murugkarpratik44/listing-alert-agent",
+  "license": "MIT",
+  "keywords": ["alerts", "rentals", "property", "listings", "gmail", "travel-time", "decision-support"]
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "source": "MyHome.ie",
+    "url": "https://r.example.awstrack.me/L0/https:%2F%2Fwww.myhome.ie%2Frentals%2Fbrochure%2F1-example-court-maynooth%2F9000001%3Futm_source%3Dalert%26utm_medium%3Demail/1/abc",
+    "address": "Apartment 1, Example Court, Maynooth, Co. Kildare",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "property_type": "Apartment",
+    "rent_amount": 2100,
+    "rent_period": "month",
+    "received_at": "2026-10-17T08:30:00+01:00",
+    "matched_nice_to_haves": ["parking"]
+  },
+  {
+    "source": "Daft.ie",
+    "url": "https://www.daft.ie/for-rent/apartment-1-example-court-maynooth-co-kildare/9000002",
+    "address": "1 Example Court, Maynooth, Co. Kildare",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "property_type": "Apartment",
+    "rent_amount": 2100,
+    "rent_period": "month",
+    "received_at": "2026-10-17T08:35:00+01:00"
+  },
+  {
+    "source": "Daft.ie",
+    "url": "https://www.daft.ie/for-rent/apartment-5-sample-row-celbridge-co-kildare/9000003",
+    "address": "5 Sample Row, Celbridge, Co. Kildare",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "property_type": "Apartment",
+    "rent_amount": 1180,
+    "rent_period": "month",
+    "received_at": "2026-10-17T07:10:00+01:00"
+  },
+  {
+    "source": "Daft.ie",
+    "url": "https://www.daft.ie/for-rent/house-8-test-park-newbridge-co-kildare/9000004",
+    "address": "8 Test Park, Newbridge, Co. Kildare",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "property_type": "House",
+    "rent_amount": 1100,
+    "rent_period": "month",
+    "received_at": "2026-10-17T06:00:00+01:00"
+  },
+  {
+    "source": "MyHome.ie",
+    "url": "https://www.myhome.ie/rentals/brochure/22-demo-street-dublin-8/9000005",
+    "address": "22 Demo Street, Dublin 8",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "property_type": "Apartment",
+    "rent_amount": 530,
+    "rent_period": "week",
+    "received_at": "2026-10-16T20:00:00+01:00"
+  },
+  {
+    "source": "Daft.ie",
+    "url": "https://www.daft.ie/for-rent/studio-3-mock-lane-leixlip/9000006",
+    "address": "3 Mock Lane, Leixlip, Co. Kildare",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "property_type": "Studio",
+    "rent_amount": 900,
+    "rent_period": "month",
+    "received_at": "2026-10-17T05:00:00+01:00"
+  },
+  {
+    "source": "Daft.ie",
+    "url": "https://www.daft.ie/for-rent/apartment-9-fable-square-leixlip/9000007",
+    "address": "9 Fable Square, Leixlip, Co. Kildare",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "property_type": "Apartment",
+    "rent_amount": 650,
+    "rent_period": "month",
+    "received_at": "2026-10-17T08:00:00+01:00",
+    "text_flags": {"payment_before_viewing": true}
+  },
+  {
+    "source": "MyHome.ie",
+    "url": "https://www.myhome.ie/rentals/brochure/4-nowhere-place/9000008",
+    "address": "4 Nowhere Place, Ballyexample",
+    "bedrooms": 1,
+    "bathrooms": null,
+    "property_type": "House",
+    "rent_amount": 1000,
+    "rent_period": "month",
+    "received_at": "2026-10-17T08:00:00+01:00"
+  },
+  {
+    "source": "Daft.ie",
+    "url": "https://www.daft.ie/for-rent/apartment-2-trial-walk-kilcock/9000009",
+    "address": "2 Trial Walk, Kilcock, Co. Kildare",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "property_type": "Apartment",
+    "rent_amount": 1400,
+    "rent_period": "month",
+    "received_at": "2026-10-17T08:00:00+01:00",
+    "matched_deal_breakers": ["ground floor"]
+  }
+]

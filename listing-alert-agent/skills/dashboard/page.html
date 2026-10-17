@@ -1,0 +1,314 @@
+<style>
+  #dash-root .rs { display: grid; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); }
+  #dash-root .rs-head h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+  #dash-root .rs-take { color: var(--color-fg-muted); margin: var(--cds-gap-xs) 0 0; font-size: var(--cds-font-size-body); }
+  #dash-root .rs-tiles { display: grid; gap: var(--cds-gap-md); grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
+  #dash-root .rs-tile, #dash-root .rs-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+  #dash-root .rs-tile .lab { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); letter-spacing: .02em; }
+  #dash-root .rs-tile .big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; margin-top: var(--cds-gap-xs); min-height: 1.3em; }
+  #dash-root .rs-tile .sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-xs); }
+  #dash-root .rs-grid { display: grid; gap: var(--cds-gap-md); grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+  #dash-root .rs-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  #dash-root .rs-card .note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: var(--cds-gap-xs) 0 var(--cds-gap-md); }
+  #dash-root .rs-map { position: relative; min-height: 320px; }
+  #dash-root .rs-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); max-width: 16rem; }
+  #dash-root .rs-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-sm); }
+  #dash-root .rs-legend i { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; margin-right: .3rem; vertical-align: middle; }
+  #dash-root .rs-funnel { display: grid; gap: var(--cds-gap-sm); }
+  #dash-root .rs-fn-row { display: grid; grid-template-columns: 7rem 1fr 2.5rem; gap: var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-body); }
+  #dash-root .rs-fn-bar { height: 14px; border-radius: 7px; background: var(--cds-chart-grid); overflow: hidden; }
+  #dash-root .rs-fn-bar span { display: block; height: 100%; border-radius: 7px; }
+  #dash-root .rs-fn-n { text-align: right; font-variant-numeric: tabular-nums; }
+  #dash-root .rs-tools { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center; margin-bottom: var(--cds-gap-md); }
+  #dash-root .rs-tools input, #dash-root .rs-tools select { font: inherit; font-size: var(--cds-font-size-caption); padding: .35rem .5rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); }
+  #dash-root .rs-tools input { flex: 1 1 12rem; min-width: 0; }
+  #dash-root .rs-tablewrap { overflow: auto; max-height: 30rem; }
+  #dash-root table.rs-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  #dash-root .rs-table th { position: sticky; top: 0; background: var(--color-panel); text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); padding: .4rem .5rem; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  #dash-root .rs-table th button { all: unset; cursor: pointer; }
+  #dash-root .rs-table th button:focus-visible { outline: 2px solid var(--color-fg); }
+  #dash-root .rs-table td { padding: .45rem .5rem; border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+  #dash-root .rs-table td.num { text-align: right; white-space: nowrap; }
+  #dash-root .rs-table a { color: inherit; text-decoration: underline; text-decoration-color: var(--color-border-line); }
+  #dash-root .pill { display: inline-block; padding: .1rem .5rem; border-radius: 999px; font-size: var(--cds-font-size-caption); white-space: nowrap; border: 1px solid var(--color-border-line); }
+  #dash-root .pill.good { color: var(--color-ok); } #dash-root .pill.warn { color: var(--color-warn); } #dash-root .pill.bad { color: var(--color-bad); }
+  #dash-root .pos { color: var(--color-bad); } #dash-root .neg { color: var(--color-ok); }
+  #dash-root .rs-how { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  #dash-root .rs-how code { font-size: inherit; }
+  #dash-root .hide-narrow { }
+  @media (max-width: 640px) { #dash-root .hide-narrow { display: none; } }
+  #dash-root [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  #dash-root [data-dash-source-state=empty] { color: transparent; }
+</style>
+
+<div class="rs">
+  <header class="rs-head" id="overview">
+    <h1>Rental search</h1>
+    <p class="rs-take" id="takeaway" data-source="summary" data-field="takeaway">—</p>
+  </header>
+
+  <section class="rs-tiles" aria-label="Headline figures">
+    <div class="rs-tile" id="tile-act">
+      <div class="lab">Act now (within budget)</div>
+      <div class="big" data-source="summary" data-field="act_now">—</div>
+      <div class="sub">listings you have been alerted to</div>
+    </div>
+    <div class="rs-tile" id="tile-shortlist">
+      <div class="lab">On your shortlist</div>
+      <div class="big" data-source="summary" data-field="in_progress">—</div>
+      <div class="sub">shortlisted, contacted, viewing, applied or offer</div>
+    </div>
+    <div class="rs-tile" id="tile-share">
+      <div class="lab">Median rent to you</div>
+      <div class="big" data-source="summary" data-field="median_share">—</div>
+      <div class="sub">your share, act-now and stretch listings</div>
+    </div>
+    <div class="rs-tile" id="tile-health">
+      <div class="lab">Alert runs, last 7 days</div>
+      <div class="big" data-source="summary" data-field="runs_7d">—</div>
+      <div class="sub" data-source="summary" data-field="last_run">—</div>
+    </div>
+  </section>
+
+  <section class="rs-grid">
+    <div class="rs-card" id="map-card">
+      <h2>Where they are</h2>
+      <p class="note">Each dot is a listing's town or district, coloured by budget tier. The star is your office; grey dots are the places with cached drive times.</p>
+      <div class="rs-map" id="map" data-source="listings places"></div>
+      <div class="rs-legend" id="legend" aria-hidden="true"></div>
+    </div>
+    <div class="rs-card" id="tracker-card">
+      <h2>Shortlist tracker</h2>
+      <p class="note">Where each listing stands. Tell Claude, for example, "mark Example Court as viewing".</p>
+      <div class="rs-funnel" id="funnel" data-source="status_counts"></div>
+    </div>
+  </section>
+
+  <section class="rs-card" id="listings-card">
+    <h2>All listings</h2>
+    <p class="note">Latest details of every listing you were alerted to, newest first. Click a heading to sort.</p>
+    <div class="rs-tools">
+      <input id="q" type="search" placeholder="Search address or area" aria-label="Search listings">
+      <select id="f-tier" aria-label="Budget tier"><option value="">All tiers</option><option value="act_now">Act now</option><option value="stretch">Stretch</option><option value="over_budget">Over budget</option></select>
+      <select id="f-status" aria-label="Status"><option value="">All statuses</option></select>
+    </div>
+    <div class="rs-tablewrap">
+      <table class="rs-table" id="tbl" data-source="listings" data-row-key="listing_url">
+        <thead><tr>
+          <th data-field="status"><button data-k="status">Status</button></th>
+          <th data-field="address"><button data-k="address">Listing</button></th>
+          <th data-field="your_share" class="num"><button data-k="your_share">Your rent</button></th>
+          <th data-field="cost_monthly" class="num hide-narrow"><button data-k="cost_monthly">Est. cost</button></th>
+          <th data-field="minutes" class="num"><button data-k="minutes">To office</button></th>
+          <th data-field="vs_market_pct" class="num hide-narrow"><button data-k="vs_market_pct">vs market</button></th>
+          <th data-field="fit" class="num hide-narrow"><button data-k="fit">Fit</button></th>
+          <th data-field="first_seen" class="hide-narrow"><button data-k="first_seen">First seen</button></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rs-card" id="runs-card">
+    <h2>Alert runs</h2>
+    <p class="note">Listings reported per day by the hourly alert. Days with no bar ran but found nothing new.</p>
+    <div id="runs" data-source="runs" style="min-height: 180px;"></div>
+  </section>
+
+  <p class="rs-how">Data comes from your private listing history, refreshed by each alert run. Travel times are drive times from the town or district centre. Market comparison uses RTB average agreed rents.</p>
+</div>
+
+<script>
+  const STATUS = ['new', 'shortlisted', 'contacted', 'viewing', 'applied', 'offer', 'not_for_me', 'rejected', 'let_agreed'];
+  const STATUS_LABEL = {new: 'New', shortlisted: 'Shortlisted', contacted: 'Contacted', viewing: 'Viewing', applied: 'Applied', offer: 'Offer', not_for_me: 'Not for me', rejected: 'Rejected', let_agreed: 'Let agreed'};
+  const TIER_LABEL = {act_now: 'Act now', stretch: 'Stretch', over_budget: 'Over budget', check: 'Check'};
+  window.RS = {STATUS, STATUS_LABEL, TIER_LABEL,
+    eur: (v) => v == null || isNaN(v) ? '—' : '€' + d3.format(',.0f')(v),
+    num: (v) => v == null || v === '' ? null : Number(v),
+  };
+
+  dash.calc('summary', {
+    title: 'Headline figures',
+    description: 'Counts and median from your listing history and run log.',
+    inputs: ['listings', 'runs'],
+    fn: (listings, runs) => {
+      const active = ['shortlisted', 'contacted', 'viewing', 'applied', 'offer'];
+      const act = listings.filter((r) => r.tier === 'act_now').length;
+      const inProgress = listings.filter((r) => active.includes(r.status)).length;
+      const shares = listings.filter((r) => r.tier === 'act_now' || r.tier === 'stretch').map((r) => Number(r.your_share)).filter((v) => !isNaN(v)).sort((a, b) => a - b);
+      const median = shares.length ? (shares.length % 2 ? shares[(shares.length - 1) / 2] : (shares[shares.length / 2 - 1] + shares[shares.length / 2]) / 2) : null;
+      const times = runs.map((r) => ({at: r.run_at, t: new Date(r.run_at).getTime()})).sort((a, b) => a.t - b.t);
+      const latest = times.length ? times[times.length - 1] : null;
+      const recent = latest ? times.filter((r) => r.t >= latest.t - 7 * 864e5) : [];
+      const last = latest ? latest.at : null;
+      const takeaway = listings.length
+        ? `${listings.length} listing${listings.length === 1 ? '' : 's'} tracked: ${act} within budget, ${inProgress} on your shortlist.`
+        : 'No listings yet. New ones appear here after each alert run.';
+      return [{act_now: act, in_progress: inProgress, median_share: median == null ? null : Math.round(median), runs_7d: recent.length,
+               last_run: last ? 'Last run ' + last.slice(0, 10) + ' ' + last.slice(11, 16) + (last.endsWith('+00:00') ? ' UTC' : '') : 'No runs yet', takeaway}];
+    },
+  });
+
+  dash.calc('status_counts', {
+    title: 'Listings by status',
+    description: 'How many listings are at each stage, from your status updates.',
+    inputs: ['listings'],
+    fn: (listings) => ['new', 'shortlisted', 'contacted', 'viewing', 'applied', 'offer', 'not_for_me', 'rejected', 'let_agreed']
+      .map((status) => ({status, n: listings.filter((r) => (r.status || 'new') === status).length})),
+  });
+
+  const fillSummary = () => {
+    const s = dash.data('summary');
+    const row = s.status === 'ok' && s.data && s.data[0];
+    document.querySelectorAll('[data-source="summary"]').forEach((el) => {
+      const f = el.dataset.field;
+      if (!row) { el.textContent = '—'; return; }
+      const v = row[f];
+      el.textContent = f === 'median_share' ? RS.eur(v) : (v == null ? '—' : String(v));
+    });
+  };
+  dash.onData(fillSummary);
+</script>
+
+<script>
+  // Map: listings by town, coloured by tier, on an equirectangular projection fitted to the places.
+  const mapEl = document.getElementById('map');
+  const legendEl = document.getElementById('legend');
+  const tierColour = (t) => t === 'act_now' ? dash.colors[0] : t === 'stretch' ? dash.colors[1] : 'var(--cds-chart-muted)';
+  legendEl.replaceChildren(...[['act_now', 'Act now'], ['stretch', 'Stretch'], ['over_budget', 'Over budget']].map(([t, l]) => {
+    const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = tierColour(t); s.append(i, l); return s;
+  }));
+  const drawMap = () => {
+    const L = dash.data('listings'), P = dash.data('places');
+    mapEl.replaceChildren();
+    if (L.status !== 'ok' || P.status !== 'ok') return;
+    const places = P.data.filter((p) => p.lat != null && p.lon != null).map((p) => ({...p, lat: +p.lat, lon: +p.lon}));
+    const listings = L.data.filter((r) => r.lat != null && r.lon != null).map((r) => ({...r, lat: +r.lat, lon: +r.lon}));
+    const all = places.concat(listings);
+    if (!all.length) return;
+    const w = mapEl.clientWidth || 320, h = Math.max(300, Math.min(420, w * 0.75)), pad = 28;
+    const midLat = d3.mean(all, (d) => d.lat) * Math.PI / 180;
+    const xs = d3.extent(all, (d) => d.lon * Math.cos(midLat)), ys = d3.extent(all, (d) => d.lat);
+    const sx = (w - 2 * pad) / Math.max(xs[1] - xs[0], 1e-6), sy = (h - 2 * pad) / Math.max(ys[1] - ys[0], 1e-6), k = Math.min(sx, sy);
+    const ox = (w - k * (xs[1] - xs[0])) / 2, oy = (h - k * (ys[1] - ys[0])) / 2;
+    const X = (d) => ox + k * (d.lon * Math.cos(midLat) - xs[0]), Y = (d) => h - oy - k * (d.lat - ys[0]);
+    const svg = d3.select(mapEl).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${w} ${h}`).attr('role', 'img').attr('aria-label', 'Map of listing locations');
+    svg.append('g').selectAll('circle').data(places.filter((p) => p.kind === 'search')).join('circle')
+      .attr('cx', X).attr('cy', Y).attr('r', 2.2).attr('fill', 'var(--cds-chart-grid)');
+    const star = d3.symbol(d3.symbolStar, 120);
+    svg.append('g').selectAll('path').data(places.filter((p) => p.kind === 'important')).join('path')
+      .attr('d', star).attr('transform', (d) => `translate(${X(d)},${Y(d)})`).attr('fill', 'var(--color-fg)');
+    svg.append('g').selectAll('text').data(places.filter((p) => p.kind === 'important')).join('text')
+      .attr('x', (d) => X(d) + 9).attr('y', (d) => Y(d) + 4).attr('fill', 'var(--color-fg)').attr('font-size', 12).text((d) => d.name);
+    const byPlace = d3.groups(listings, (d) => d.place);
+    const tip = document.createElement('div'); tip.className = 'rs-tip'; tip.hidden = true; mapEl.append(tip);
+    svg.append('g').selectAll('circle').data(byPlace).join('circle')
+      .attr('cx', ([, rs]) => X(rs[0])).attr('cy', ([, rs]) => Y(rs[0]))
+      .attr('r', ([, rs]) => 6 + Math.min(6, rs.length * 1.5))
+      .attr('fill', ([, rs]) => tierColour(rs.some((r) => r.tier === 'act_now') ? 'act_now' : rs.some((r) => r.tier === 'stretch') ? 'stretch' : 'over_budget'))
+      .attr('fill-opacity', .85).attr('stroke', 'var(--color-panel)').attr('stroke-width', 1.5)
+      .on('pointerenter pointermove', (event, [place, rs]) => {
+        tip.replaceChildren();
+        const h4 = document.createElement('div'); h4.style.color = 'var(--cds-text-secondary)'; h4.textContent = `${place} · ${rs.length} listing${rs.length === 1 ? '' : 's'}`; tip.append(h4);
+        rs.slice(0, 4).forEach((r) => { const d = document.createElement('div'); d.textContent = `${RS.eur(r.your_share)} · ${RS.TIER_LABEL[r.tier] || r.tier} · ${(r.address || '').split(',')[0]}`; tip.append(d); });
+        tip.hidden = false;
+        const [mx, my] = d3.pointer(event, mapEl);
+        tip.style.left = Math.min(mx + 12, mapEl.clientWidth - tip.offsetWidth - 4) + 'px';
+        tip.style.top = Math.max(0, my - tip.offsetHeight - 8) + 'px';
+      })
+      .on('pointerleave', () => { tip.hidden = true; });
+  };
+  dash.onData(drawMap);
+</script>
+
+<script>
+  // Shortlist tracker: one bar per stage on a shared scale.
+  const funnel = document.getElementById('funnel');
+  dash.onData(() => {
+    const s = dash.data('status_counts');
+    funnel.replaceChildren();
+    if (s.status !== 'ok') return;
+    const max = d3.max(s.data, (d) => d.n) || 1;
+    const colourFor = (st) => ['shortlisted', 'contacted', 'viewing', 'applied', 'offer', 'let_agreed'].includes(st) ? dash.colors[0] : st === 'new' ? dash.colors[2] : 'var(--cds-chart-muted)';
+    s.data.forEach((d) => {
+      const row = document.createElement('div'); row.className = 'rs-fn-row';
+      const lab = document.createElement('div'); lab.textContent = RS.STATUS_LABEL[d.status] || d.status;
+      const bar = document.createElement('div'); bar.className = 'rs-fn-bar';
+      const fill = document.createElement('span'); fill.style.width = (d.n / max * 100) + '%'; fill.style.background = colourFor(d.status); bar.append(fill);
+      const n = document.createElement('div'); n.className = 'rs-fn-n'; n.textContent = d.n;
+      n.dataset.source = 'status_counts'; n.dataset.field = 'n'; n.dataset.where = 'status=' + encodeURIComponent(d.status);
+      row.append(lab, bar, n); funnel.append(row);
+    });
+  });
+</script>
+
+<script>
+  // Listings table with search, filters and sorting.
+  const tbody = document.querySelector('#tbl tbody');
+  const q = document.getElementById('q'), fTier = document.getElementById('f-tier'), fStatus = document.getElementById('f-status');
+  fStatus.append(...RS.STATUS.map((s) => new Option(RS.STATUS_LABEL[s], s)));
+  let sortKey = 'first_seen', sortDir = -1;
+  document.querySelectorAll('#tbl th button').forEach((b) => b.addEventListener('click', () => {
+    const k = b.dataset.k; sortDir = sortKey === k ? -sortDir : (['address', 'status'].includes(k) ? 1 : -1); sortKey = k; drawTable();
+  }));
+  [q, fTier, fStatus].forEach((el) => el.addEventListener('input', () => drawTable()));
+  const pillClass = (st) => ['shortlisted', 'contacted', 'viewing', 'applied', 'offer', 'let_agreed'].includes(st) ? 'good' : ['not_for_me', 'rejected'].includes(st) ? 'bad' : '';
+  const drawTable = () => {
+    const L = dash.data('listings');
+    tbody.replaceChildren();
+    document.querySelectorAll('#tbl th').forEach((th) => th.removeAttribute('aria-sort'));
+    const active = document.querySelector(`#tbl th button[data-k="${sortKey}"]`);
+    if (active) active.parentElement.setAttribute('aria-sort', sortDir > 0 ? 'ascending' : 'descending');
+    if (L.status !== 'ok') return;
+    const text = q.value.trim().toLowerCase();
+    let rows = L.data.filter((r) => (!fTier.value || r.tier === fTier.value) && (!fStatus.value || (r.status || 'new') === fStatus.value)
+      && (!text || `${r.address} ${r.area} ${r.place}`.toLowerCase().includes(text)));
+    const val = (r) => { const v = r[sortKey]; return v == null || v === '' ? null : (typeof v === 'number' ? v : (isNaN(+v) || sortKey === 'first_seen' ? String(v) : +v)); };
+    rows = rows.slice().sort((a, b) => { const x = val(a), y = val(b); if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
+    rows.forEach((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = r.listing_url;
+      const td = (cls) => { const c = document.createElement('td'); if (cls) c.className = cls; tr.append(c); return c; };
+      const st = td(); const pill = document.createElement('span'); pill.className = 'pill ' + pillClass(r.status); pill.textContent = RS.STATUS_LABEL[r.status] || r.status || 'New'; st.append(pill);
+      const addr = td(); const a = document.createElement('a'); a.href = r.listing_url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = r.address || r.listing_url; addr.append(a);
+      const meta = document.createElement('div'); meta.style.color = 'var(--color-fg-muted)';
+      meta.textContent = `${r.bedrooms ?? '?'} bed / ${r.bathrooms ?? '?'} bath · ${r.area} · ${RS.TIER_LABEL[r.tier] || r.tier || ''}`; addr.append(meta);
+      td('num').textContent = RS.eur(r.your_share);
+      td('num hide-narrow').textContent = RS.eur(r.cost_monthly);
+      td('num').textContent = r.minutes == null ? '—' : `${Math.round(r.minutes)} min`;
+      const vm = td('num hide-narrow'); vm.textContent = r.vs_market_pct == null ? '—' : d3.format('+.0f')(r.vs_market_pct) + '%';
+      if (r.vs_market_pct != null) vm.className += r.vs_market_pct >= 3 ? ' pos' : r.vs_market_pct <= -3 ? ' neg' : '';
+      td('num hide-narrow').textContent = r.fit == null ? '—' : Math.round(r.fit);
+      td('hide-narrow').textContent = r.first_seen ? d3.utcFormat('%d %b')(new Date(r.first_seen)) : '—';
+      tbody.append(tr);
+    });
+    if (!rows.length) {
+      const tr = document.createElement('tr'); const c = document.createElement('td'); c.colSpan = 8; c.style.color = 'var(--color-fg-muted)';
+      c.textContent = L.data.length ? 'No listings match these filters.' : 'No listings yet.'; tr.append(c); tbody.append(tr);
+    }
+  };
+  dash.onData(drawTable);
+</script>
+
+<script>
+  // Runs: listings reported per day.
+  const runsEl = document.getElementById('runs');
+  dash.onData(() => {
+    const R = dash.data('runs');
+    runsEl.replaceChildren();
+    if (R.status !== 'ok' || !R.data.length) return;
+    const byDay = d3.rollups(R.data, (v) => ({reported: d3.sum(v, (d) => +d.reported), runs: v.length}), (d) => d.run_at.slice(0, 10))
+      .map(([day, v]) => ({day: new Date(day + 'T00:00:00Z'), ...v})).sort((a, b) => a.day - b.day);
+    const w = runsEl.clientWidth || 320, h = 180, m = {t: 10, r: 8, b: 26, l: 28};
+    const x = d3.scaleBand(byDay.map((d) => d.day), [m.l, w - m.r]).padding(0.35);
+    const y = d3.scaleLinear([0, Math.max(1, d3.max(byDay, (d) => d.reported))], [h - m.b, m.t]).nice();
+    const svg = d3.select(runsEl).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${w} ${h}`).attr('role', 'img').attr('aria-label', 'Listings reported per day');
+    svg.append('g').selectAll('line').data(y.ticks(3)).join('line').attr('x1', m.l).attr('x2', w - m.r).attr('y1', y).attr('y2', y).attr('stroke', 'var(--cds-chart-grid)');
+    svg.append('g').selectAll('text').data(y.ticks(3)).join('text').attr('x', m.l - 6).attr('y', (d) => y(d) + 4).attr('text-anchor', 'end').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(d3.format('d'));
+    svg.append('g').selectAll('rect').data(byDay).join('rect').attr('x', (d) => x(d.day)).attr('width', Math.min(32, x.bandwidth()))
+      .attr('y', (d) => y(d.reported)).attr('height', (d) => y(0) - y(d.reported)).attr('rx', 4).attr('fill', dash.colors[0]);
+    const every = Math.ceil(byDay.length / Math.max(1, Math.floor(w / 70)));
+    svg.append('g').selectAll('text').data(byDay.filter((d, i) => i % every === 0)).join('text')
+      .attr('x', (d) => x(d.day) + Math.min(32, x.bandwidth()) / 2).attr('y', h - 8).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)')
+      .text((d) => d3.utcFormat('%d %b')(d.day));
+  });
+</script>

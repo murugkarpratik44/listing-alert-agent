@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/murugkarpratik44/listing-alert-agent/schemas/profile.schema.json",
+  "title": "listing-alert-agent profile (config/profile.yaml)",
+  "type": "object",
+  "required": ["owner", "goal", "criteria", "budget", "areas"],
+  "additionalProperties": false,
+  "properties": {
+    "owner": {
+      "type": "object",
+      "required": ["email"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "description": "First name used in emails. Optional."},
+        "email": {"type": "string", "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$", "description": "The only address alerts are sent to."},
+        "timezone": {"type": "string", "description": "IANA time zone, e.g. Europe/Dublin. Used for quiet hours and the digest."}
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": ["type", "country", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["rent", "buy", "job", "vehicle", "other"]},
+        "country": {"type": "string", "pattern": "^[A-Z]{2}$", "description": "ISO 3166-1 alpha-2 code."},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "move_by": {"type": ["string", "null"], "description": "Target date, YYYY-MM-DD."},
+        "pack": {"type": "string", "description": "Pack id, e.g. ie-rentals."}
+      }
+    },
+    "criteria": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "property_types": {"type": "array", "items": {"type": "string"}, "description": "Wanted types, lower case. Empty means any."},
+        "exclude_types": {"type": "array", "items": {"type": "string"}},
+        "bedrooms": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+        "min_bathrooms": {"type": "number", "minimum": 0},
+        "must_haves": {"type": "array", "items": {"type": "string"}},
+        "nice_to_haves": {"type": "array", "items": {"type": "string"}},
+        "deal_breakers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["model", "amount"],
+      "additionalProperties": false,
+      "properties": {
+        "model": {"enum": ["total", "per_person"]},
+        "amount": {"type": "number", "exclusiveMinimum": 0, "description": "Monthly amount (per person when model is per_person)."},
+        "stretch_pct": {"type": "number", "minimum": 0, "maximum": 100, "default": 10},
+        "bills_included": {"type": "boolean"},
+        "occupancy_rules": {
+          "type": "array",
+          "description": "First matching rule sets how many people share the cost.",
+          "items": {
+            "type": "object",
+            "required": ["people"],
+            "additionalProperties": false,
+            "properties": {
+              "when": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "bedrooms": {"type": "integer"},
+                  "min_bathrooms": {"type": "number"}
+                }
+              },
+              "people": {"type": "integer", "minimum": 1}
+            }
+          }
+        }
+      }
+    },
+    "areas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "type", "priority"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "label": {"type": "string"},
+          "type": {"enum": ["travel_time", "region"]},
+          "anchor": {"type": "string", "description": "travel_time only: id of an anchor in places.yaml."},
+          "mode": {"enum": ["driving", "walking", "bicycling", "transit"]},
+          "max_minutes": {"type": "number", "exclusiveMinimum": 0},
+          "match": {"type": "array", "items": {"type": "string"}, "description": "region only: words matched in the address."},
+          "anchor_limits": {
+            "type": "object",
+            "description": "Overrides an anchor's max_minutes for listings in this area, e.g. a longer limit for a weekly-commute area. null = do not score travel to that anchor.",
+            "additionalProperties": {"type": ["number", "null"], "exclusiveMinimum": 0}
+          },
+          "anchor_trips": {
+            "type": "object",
+            "description": "Overrides an anchor's trips_per_week for listings in this area, e.g. 1 for a weekly-commute area. Used for the travel weight and the commute cost.",
+            "additionalProperties": {"type": "number", "minimum": 0}
+          },
+          "commute_note": {"type": "string", "description": "Short note shown on every listing in this area, e.g. rail options. Check timetables before writing it."},
+          "priority": {"type": "integer", "minimum": 1}
+        },
+        "allOf": [
+          {"if": {"properties": {"type": {"const": "travel_time"}}}, "then": {"required": ["anchor", "max_minutes"]}},
+          {"if": {"properties": {"type": {"const": "region"}}}, "then": {"required": ["match"]}}
+        ]
+      }
+    },
+    "weights": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "budget": {"type": "number", "minimum": 0},
+        "travel": {"type": "number", "minimum": 0},
+        "value": {"type": "number", "minimum": 0},
+        "features": {"type": "number", "minimum": 0},
+        "freshness": {"type": "number", "minimum": 0},
+        "confidence": {"type": "number", "minimum": 0}
+      }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["github", "drive", "local"], "default": "github"},
+        "repository": {"type": "string", "description": "github: owner/name of the private state repository."},
+        "drive_folder": {"type": "string", "description": "drive: name of the Google Drive folder holding the state."},
+        "local_path": {"type": "string", "description": "local: folder on the user's computer."}
+      }
+    },
+    "dashboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional private dashboard page, refreshed by alert runs.",
+      "properties": {
+        "url": {"type": "string", "description": "The dashboard's claude.ai artifact link."},
+        "refresh": {"enum": ["on_change", "daily", "off"], "default": "on_change"}
+      }
+    },
+    "costs": {
+      "type": "object",
+      "description": "Inputs for the monthly cost estimate. Anything left out uses the pack's sourced defaults.",
+      "additionalProperties": false,
+      "properties": {
+        "energy_eur_per_kwh": {"type": ["number", "null"], "minimum": 0},
+        "energy_monthly_eur": {"description": "Your own monthly energy bill (your share), a number or [low, high]. Used instead of the BER-based estimate.",
+                               "oneOf": [{"type": "number", "minimum": 0}, {"type": "array", "items": {"type": "number", "minimum": 0}, "minItems": 2, "maxItems": 2}]},
+        "car_eur_per_km": {"type": ["number", "null"], "minimum": 0},
+        "transit_return_fare": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0},
+                                "description": "Return fare per trip, by anchor id, for anchors reached by public transport."}
+      }
+    },
+    "alerts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "push_tiers": {"type": "array", "items": {"enum": ["act_now", "stretch", "over_budget", "check_location"]}},
+        "quiet_hours": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "start": {"type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$"},
+            "end": {"type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$"}
+          }
+        },
+        "digest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "day": {"enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]},
+            "time": {"type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$"}
+          }
+        },
+        "digest_cc": {"type": ["string", "null"], "description": "One extra address for the weekly digest only. Never used for alerts."},
+        "monthly_reminders": {"type": "array", "items": {"type": "string"}, "description": "Extra lines shown in the first weekly digest of each month."}
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "myhome-alert-sample.txt": [
+    {
+      "source": "MyHome.ie",
+      "url": "https://r.example.awstrack.me/L0/https:%2F%2Fwww.myhome.ie%2Frentals%2Fbrochure%2F1-example-court-maynooth%2F9000001%3Futm_source%3Dalert%26utm_medium%3Demail/1/abc",
+      "address": "Apartment 1, Example Court, Maynooth, Co. Kildare",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "floor_area_m2": 68,
+      "property_type": "Apartment",
+      "energy_rating": "B3",
+      "rent_amount": 2100,
+      "rent_period": "month",
+      "received_at": "2026-10-17T08:30:00+01:00",
+      "matched_nice_to_haves": ["parking"]
+    },
+    {
+      "source": "MyHome.ie",
+      "url": "https://r.example.awstrack.me/L0/https:%2F%2Fwww.myhome.ie%2Frentals%2Fbrochure%2F22-demo-street-dublin-8%2F9000005%3Futm_source%3Dalert/1/def",
+      "address": "22 Demo Street, Dublin 8",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "floor_area_m2": 61,
+      "property_type": "Apartment",
+      "rent_amount": 530,
+      "rent_period": "week",
+      "received_at": "2026-10-17T08:30:00+01:00"
+    }
+  ],
+  "daft-alert-sample.txt": [
+    {
+      "source": "Daft.ie",
+      "url": "https://www.daft.ie/for-rent/apartment-5-sample-row-celbridge-co-kildare/9000003",
+      "address": "5 Sample Row, Celbridge, Co. Kildare",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "property_type": "Apartment",
+      "rent_amount": 1180,
+      "rent_period": "month",
+      "received_at": "2026-10-17T07:10:00+01:00"
+    },
+    {
+      "source": "Daft.ie",
+      "url": "https://www.daft.ie/for-rent/apartment-9-fable-square-leixlip/9000007",
+      "address": "9 Fable Square, Leixlip, Co. Kildare",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "property_type": "Apartment",
+      "rent_amount": 650,
+      "rent_period": "month",
+      "received_at": "2026-10-17T07:10:00+01:00",
+      "text_flags": {"payment_before_viewing": true, "owner_abroad": true}
+    }
+  ]
+}

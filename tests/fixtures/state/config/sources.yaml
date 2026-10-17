@@ -1,0 +1,10 @@
+pack: ie-rentals
+sources:
+  - id: daft
+    name: Daft.ie
+    senders: ["alerts@daft.ie"]
+    silence_hours: 48
+  - id: myhome
+    name: MyHome.ie
+    senders: ["notifications@myhome.ie"]
+    silence_hours: 72

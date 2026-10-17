@@ -1,0 +1,41 @@
+id: ie-rentals
+title: Ireland – rentals
+domain: rentals
+country: IE
+currency: EUR
+version: 0.1.0
+maintainer: murugkarpratik44
+sources:
+  - id: daft
+    name: Daft.ie
+    senders: ["*@daft.ie"]            # narrowed to the exact address at setup, from a real alert email
+    silence_hours: 48
+    alert_setup: sources/daft.md
+    parser: parsers/daft.md
+    terms_checked: 2026-10-16
+  - id: myhome
+    name: MyHome.ie
+    senders: ["notifications@myhome.ie"]
+    silence_hours: 72
+    alert_setup: sources/myhome.md
+    parser: parsers/myhome.md
+    terms_checked: 2026-10-16
+places:
+  gazetteer: places/README.md
+  place_lists: places/
+benchmark:
+  file: benchmark/rtb-2025.csv
+  source: "RTB average monthly rent 2025, CSO table RIQ02"
+  licence: CC BY 4.0
+  url: https://data.cso.ie/table/RIQ02
+  checked: 2026-10-17
+  measure: "Average agreed rent for new tenancies registered with the RTB, mean of 2025 quarters"
+  caution: "Agreed rents for registered tenancies, not asking rents. Use as a guide, not a valuation."
+rent:
+  periods: {week: "x 52 / 12", month: "as stated"}
+notes:
+  rail: notes/rail.md
+  checklist: notes/viewing-checklist.md
+  costs: notes/costs.yaml
+benchmark_notes: benchmark/README.md
+fixtures: fixtures/

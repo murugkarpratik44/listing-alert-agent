@@ -1,0 +1,17 @@
+place,region,lat,lon,anchor_id,mode,minutes,km,method,confidence,computed_at
+Maynooth,Kildare,53.381,-6.592,work,driving,4,1.5,test fixture,area,2026-10-01T09:00:00+00:00
+Maynooth,Kildare,53.381,-6.592,family,driving,48,62.0,test fixture,area,2026-10-01T09:00:00+00:00
+Celbridge,Kildare,53.340,-6.539,work,driving,12,8.0,test fixture,area,2026-10-01T09:00:00+00:00
+Celbridge,Kildare,53.340,-6.539,family,driving,55,70.0,test fixture,area,2026-10-01T09:00:00+00:00
+Leixlip,Kildare,53.366,-6.496,work,driving,11,8.5,test fixture,area,2026-10-01T09:00:00+00:00
+Leixlip,Kildare,53.366,-6.496,family,driving,54,70.5,test fixture,area,2026-10-01T09:00:00+00:00
+Kilcock,Kildare,53.400,-6.669,work,driving,9,7.0,test fixture,area,2026-10-01T09:00:00+00:00
+Kilcock,Kildare,53.400,-6.669,family,driving,42,55.0,test fixture,area,2026-10-01T09:00:00+00:00
+Naas,Kildare,53.216,-6.666,work,driving,28,27.0,test fixture,area,2026-10-01T09:00:00+00:00
+Naas,Kildare,53.216,-6.666,family,driving,62,80.0,test fixture,area,2026-10-01T09:00:00+00:00
+Newbridge,Kildare,53.181,-6.797,work,driving,36,36.0,test fixture,area,2026-10-01T09:00:00+00:00
+Newbridge,Kildare,53.181,-6.797,family,driving,58,75.0,test fixture,area,2026-10-01T09:00:00+00:00
+Dublin 8,Dublin,53.338,-6.284,work,driving,38,26.0,test fixture,area,2026-10-01T09:00:00+00:00
+Dublin 8,Dublin,53.338,-6.284,family,driving,72,88.0,test fixture,area,2026-10-01T09:00:00+00:00
+Dublin 15,Dublin,53.388,-6.385,work,driving,22,16.0,test fixture,area,2026-10-01T09:00:00+00:00
+Dublin 15,Dublin,53.388,-6.385,family,driving,58,76.0,test fixture,area,2026-10-01T09:00:00+00:00

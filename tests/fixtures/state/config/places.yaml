@@ -1,0 +1,25 @@
+# Synthetic test places. Public landmarks, not anyone's real workplace or home.
+anchors:
+  - id: work
+    label: Work
+    address: Maynooth University, Maynooth, Co. Kildare
+    modes: [driving]
+    max_minutes: 30
+    trips_per_week: 3
+    importance: high
+  - id: family
+    label: Family
+    address: Mullingar, Co. Westmeath
+    modes: [driving]
+    max_minutes: 60
+    trips_per_week: 1
+    importance: medium
+search_places:
+  - {name: Maynooth, region: Kildare}
+  - {name: Celbridge, region: Kildare}
+  - {name: Leixlip, region: Kildare}
+  - {name: Kilcock, region: Kildare}
+  - {name: Naas, region: Kildare}
+  - {name: Newbridge, region: Kildare}
+  - {name: Dublin 8, region: Dublin}
+  - {name: Dublin 15, region: Dublin}

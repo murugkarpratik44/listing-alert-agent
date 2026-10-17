@@ -1,0 +1,46 @@
+# Synthetic test profile. Invented person and invented preferences.
+owner:
+  name: Test User
+  email: test.user@example.com
+  timezone: Europe/Dublin
+goal:
+  type: rent
+  country: IE
+  currency: EUR
+  move_by: "2026-12-01"
+criteria:
+  property_types: [apartment, house, duplex]
+  exclude_types: [studio, house share, room]
+  bedrooms: [1, 2]
+  min_bathrooms: 1
+  must_haves: []
+  nice_to_haves: [parking, balcony]
+  deal_breakers: [ground floor]
+budget:
+  model: per_person
+  amount: 1100
+  stretch_pct: 10
+  bills_included: false
+  occupancy_rules:
+    - when: {bedrooms: 2, min_bathrooms: 2}
+      people: 2
+    - people: 1
+areas:
+  - id: near-work
+    label: Within 30 min of work
+    type: travel_time
+    anchor: work
+    mode: driving
+    max_minutes: 30
+    priority: 1
+  - id: dublin
+    label: County Dublin
+    type: region
+    match: [dublin]
+    priority: 3
+weights: {budget: 30, travel: 30, value: 15, features: 15, freshness: 5, confidence: 5}
+alerts:
+  push_tiers: [act_now]
+  quiet_hours: {start: "23:00", end: "07:00"}
+  digest: {day: sunday, time: "10:00"}
+  digest_cc: null

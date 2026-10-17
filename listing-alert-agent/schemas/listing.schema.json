@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/murugkarpratik44/listing-alert-agent/schemas/listing.schema.json",
+  "title": "Extracted listings (input to laa.py process)",
+  "description": "One object per listing found in an alert email. Facts only: never include names, phone numbers or email addresses of landlords, agents or sellers.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["source", "url", "address", "rent_amount", "rent_period"],
+    "additionalProperties": false,
+    "properties": {
+      "source": {"type": "string", "description": "Source name as in sources.yaml, e.g. Daft.ie."},
+      "url": {"type": "string", "format": "uri", "description": "Listing link exactly as in the email; the engine removes tracking."},
+      "address": {"type": ["string", "null"]},
+      "bedrooms": {"type": ["integer", "null"], "minimum": 0},
+      "bathrooms": {"type": ["number", "null"], "minimum": 0},
+      "property_type": {"type": ["string", "null"]},
+      "floor_area_m2": {"type": ["number", "null"]},
+      "energy_rating": {"type": ["string", "null"]},
+      "rent_amount": {"type": ["number", "null"], "description": "Lower figure if the email shows a range."},
+      "rent_period": {"enum": ["week", "month", "year", null]},
+      "rent_is_range": {"type": "boolean"},
+      "received_at": {"type": "string", "description": "Email received time, ISO 8601 with offset."},
+      "gmail_message_id": {"type": "string"},
+      "matched_must_haves": {"type": "array", "items": {"type": "string"}},
+      "must_haves_confirmed_absent": {"type": "boolean"},
+      "matched_nice_to_haves": {"type": "array", "items": {"type": "string"}},
+      "matched_deal_breakers": {"type": "array", "items": {"type": "string"}},
+      "text_flags": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "payment_before_viewing": {"type": "boolean"},
+          "owner_abroad": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

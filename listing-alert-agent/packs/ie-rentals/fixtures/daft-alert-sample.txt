@@ -1,0 +1,19 @@
+SYNTHETIC TEST EMAIL – invented listings, addresses and links. ILLUSTRATIVE LAYOUT ONLY: the real Daft.ie alert layout has not been confirmed (see parsers/daft.md).
+From: Daft.ie <alerts@daft.ie>
+Subject: 2 new properties match your saved search "Kildare"
+Date: Sat, 17 Oct 2026 07:10:00 +0100
+
+New properties for your saved search: Kildare
+
+€1,180 per month
+5 Sample Row, Celbridge, Co. Kildare
+1 Bed · 1 Bath · Apartment
+https://www.daft.ie/for-rent/apartment-5-sample-row-celbridge-co-kildare/9000003
+
+€650 per month
+9 Fable Square, Leixlip, Co. Kildare
+1 Bed · 1 Bath · Apartment
+Owner currently abroad. Deposit by bank transfer secures the apartment before viewing.
+https://www.daft.ie/for-rent/apartment-9-fable-square-leixlip/9000007
+
+Manage saved searches | Unsubscribe

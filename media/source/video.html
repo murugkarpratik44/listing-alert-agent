@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Listing Alert Agent – 60-second video stage</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0B5D56;--teal2:#0E7A70;--ink:#142420;--muted:#4A5A55;--bg:#F4F6F4;--line:#D5DDD9;--mint:#DCEFEB;--amber:#B45309;--sand:#FBE9D0;--red:#9A3412}
+*{box-sizing:border-box}
+html,body{margin:0;overflow:hidden;background:var(--bg);font-family:'Source Sans 3',sans-serif;color:var(--ink)}
+body.wide{width:1920px;height:1080px} body.sq{width:1080px;height:1080px}
+.sora{font-family:'Sora',sans-serif}
+/* caption block */
+#cap{position:absolute}
+body.wide #cap{left:110px;top:0;width:640px;height:1080px;display:flex;flex-direction:column;justify-content:center}
+body.sq #cap{left:60px;top:56px;width:960px;height:240px;display:flex;flex-direction:column;justify-content:flex-start}
+.c{position:absolute;opacity:0}
+body.wide .c{width:640px}
+body.sq .c{width:960px}
+.c .k{font-family:'Sora';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.c .h{font-family:'Sora';font-weight:700;line-height:1.1;margin-top:14px}
+body.wide .c .k{font-size:22px} body.wide .c .h{font-size:60px}
+body.sq .c .k{font-size:22px} body.sq .c .h{font-size:52px}
+/* visual stage */
+#vis{position:absolute;width:960px;height:720px;transform-origin:0 0}
+body.wide #vis{left:840px;top:180px;transform:scale(1.0)}
+body.sq #vis{left:60px;top:318px;transform:scale(1.0)}
+.v{position:absolute;inset:0;opacity:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px}
+/* 1 inbox */
+.mail{position:absolute;left:60px;width:840px;height:64px;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:18px;padding:0 22px;font-size:22px}
+.mail .from{font-weight:700;width:130px}
+.mail .sub{color:var(--muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mail .dot{width:12px;height:12px;border-radius:6px;background:var(--teal2)}
+.q{position:absolute;left:0;right:0;bottom:30px;text-align:center;font-family:'Sora';font-weight:600;font-size:40px;color:var(--ink)}
+/* 2 setup */
+.chat{position:absolute;left:40px;right:40px;top:20px;bottom:20px;padding:34px;display:flex;flex-direction:column;gap:16px}
+.qa{display:flex;flex-direction:column;gap:10px;opacity:0}
+.ask{align-self:flex-start;background:#EEF2F0;border-radius:18px 18px 18px 6px;padding:14px 20px;font-size:24px;max-width:780px}
+.ans{align-self:flex-end;background:var(--ink);color:#fff;border-radius:18px 18px 6px 18px;padding:14px 20px;font-size:24px;max-width:780px}
+/* 3 travel */
+.map{position:absolute;left:20px;top:20px;width:500px;height:680px}
+.pin{position:absolute;transform:translate(-50%,-50%);opacity:0}
+.pin .d{width:18px;height:18px;border-radius:9px;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.pin .l{position:absolute;left:16px;top:-14px;white-space:nowrap;font-size:19px;font-weight:700;background:rgba(255,255,255,.85);padding:1px 6px;border-radius:6px}
+.work .d{width:28px;height:28px;border-radius:8px;background:var(--ink)}
+.bars{position:absolute;left:560px;top:40px;width:380px;display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:10px;font-size:20px;opacity:0}
+.bar .track{height:30px;background:#E6EBE9;border-radius:6px;position:relative;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-weight:700;font-size:17px}
+.limit{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--ink)}
+.note{position:absolute;left:560px;top:560px;width:380px;font-size:21px;line-height:1.35;opacity:0}
+/* 4 run */
+.lst{position:absolute;left:60px;width:840px;height:92px;padding:0 24px;display:grid;grid-template-columns:150px 1fr 120px;align-items:center;gap:16px;font-size:21px}
+.lst .p{font-family:'Sora';font-weight:700;font-size:26px}
+.lst .a{font-weight:600}
+.lst .r{color:var(--muted);font-size:18px;margin-top:2px}
+.fit{justify-self:end;border-radius:10px;padding:6px 10px;text-align:center;font-family:'Sora';font-weight:700;font-size:28px;line-height:1}
+.fit small{display:block;font-size:11px;letter-spacing:.08em;font-weight:600;margin-top:3px}
+.out{position:absolute;left:60px;width:840px;height:56px;border-radius:12px;border:1px dashed #B9C4C0;display:flex;align-items:center;padding:0 22px;gap:14px;color:var(--muted);font-size:20px}
+.out s{color:#7A8A85}
+/* 5 alert */
+.phone{position:absolute;left:300px;top:0;width:360px;height:720px;border-radius:44px;background:#0E1513;padding:14px}
+.screen{position:absolute;inset:14px;border-radius:32px;overflow:hidden;background:#F2F4F5}
+.screen img{position:absolute;left:0;top:0;width:332px}
+.notif{position:absolute;left:24px;right:24px;top:24px;background:rgba(255,255,255,.96);border-radius:20px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-size:17px;line-height:1.3;opacity:0}
+.notif b{display:block;font-size:15px;color:var(--muted);font-weight:600;margin-bottom:3px}
+/* 6 decide */
+table{border-collapse:collapse;font-size:22px;width:100%}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid #E3E8E6}
+th{font-family:'Sora';font-size:20px}
+td.lead{background:var(--mint);font-weight:700}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:22px;line-height:1.3;opacity:0}
+.check i{flex:0 0 26px;height:26px;border-radius:7px;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-style:normal;color:var(--teal);font-weight:700;font-size:18px}
+/* 7 safe */
+.safe{position:absolute;left:40px;right:40px;display:flex;gap:22px;align-items:center;padding:28px 30px;opacity:0}
+.safe .ic{flex:0 0 64px;height:64px;border-radius:16px;background:var(--mint);display:flex;align-items:center;justify-content:center}
+.safe .t{font-family:'Sora';font-weight:600;font-size:30px}
+.safe .s{font-size:21px;color:var(--muted);margin-top:4px}
+/* 8 end */
+#end{position:absolute;inset:0;background:var(--ink);color:#fff;opacity:0;display:flex;flex-direction:column;justify-content:center;gap:26px}
+body.wide #end{padding:0 140px} body.sq #end{padding:0 80px}
+#end .n{font-family:'Sora';font-weight:700;font-size:76px;line-height:1.05}
+#end .u{font-family:'Sora';font-size:32px;color:#9FD8CF}
+#end .w{font-size:28px;color:#DCE6E3}
+#end .fine{font-size:20px;color:#9FB0AB}
+</style>
+</head>
+<body class="wide">
+<div id="cap">
+  <div class="c" id="c1"><div class="k">The problem</div><div class="h">Alert emails pile up. Which one is right for you?</div></div>
+  <div class="c" id="c2"><div class="k">Setup, once</div><div class="h">Tell Claude where you need to get to, your budget and your deal-breakers.</div></div>
+  <div class="c" id="c3"><div class="k">Real travel times</div><div class="h">Drive time by road, not distance as the crow flies.</div></div>
+  <div class="c" id="c4"><div class="k">Every hour</div><div class="h">New alert emails are read, checked and ranked, with reasons.</div></div>
+  <div class="c" id="c5"><div class="k">The alert</div><div class="h">One email and one phone notification. Nothing new, no message.</div></div>
+  <div class="c" id="c6"><div class="k">Decide faster</div><div class="h">Compare side by side. Get a viewing checklist with the rules.</div></div>
+  <div class="c" id="c7"><div class="k">Safe by design</div><div class="h">Email only. It never visits or scrapes listing sites.</div></div>
+</div>
+
+<div id="vis">
+  <!-- 1 inbox -->
+  <div class="v" id="v1">
+    <div id="mails"></div>
+  </div>
+
+  <!-- 2 setup -->
+  <div class="v" id="v2">
+    <div class="card chat">
+      <div class="qa" id="qa1"><div class="ask">Where do you need to get to, and how often?</div><div class="ans">Work in Maynooth, 3 days a week, within 30 minutes by car. Family in Mullingar, once a week.</div></div>
+      <div class="qa" id="qa2"><div class="ask">What can you spend?</div><div class="ans">€1,100 a month each. I'd share a 2-bed with 2 bathrooms.</div></div>
+      <div class="qa" id="qa3"><div class="ask">Anything that rules a place out?</div><div class="ans">Ground floor. No studios or house shares.</div></div>
+    </div>
+  </div>
+
+  <!-- 3 travel -->
+  <div class="v" id="v3">
+    <div class="card map" id="map"></div>
+    <div class="bars" id="bars"></div>
+    <div class="note" id="tnote"><b>Dublin 15</b> is 16 km away and takes 22 min. <b>Naas</b> is 27 km and 28 min. <b>Newbridge</b> misses the 30-minute limit.</div>
+  </div>
+
+  <!-- 4 run -->
+  <div class="v" id="v4"><div id="runrows"></div></div>
+
+  <!-- 5 alert -->
+  <div class="v" id="v5">
+    <div class="phone"><div class="screen"><img id="pimg" src="alert-phone.png" alt="">
+      <div class="notif" id="notif"><b>Claude · Listing alerts</b>2 act now, 1 stretch – Within 30 min of work. Details emailed.</div>
+    </div></div>
+  </div>
+
+  <!-- 6 decide -->
+  <div class="v" id="v6">
+    <div class="card" style="position:absolute;left:0;top:0;width:960px;height:380px;padding:18px 18px" id="cmp">
+      <table>
+        <tr><th></th><th>Example Court, Maynooth</th><th>Sample Row, Celbridge</th></tr>
+        <tr><td>Your rent</td><td class="lead">€1,050 (shared)</td><td>€1,180</td></tr>
+        <tr><td>Monthly cost</td><td class="lead">≈ €1,233</td><td>≈ €1,439</td></tr>
+        <tr><td>Drive to work</td><td class="lead">4 min</td><td>12 min</td></tr>
+        <tr><td>vs area average</td><td>22% above</td><td class="lead">6% below</td></tr>
+      </table>
+    </div>
+    <div class="card" style="position:absolute;left:0;top:404px;width:960px;height:316px;padding:24px 30px;display:flex;flex-direction:column;gap:14px" id="vp">
+      <div class="sora" style="font-weight:600;font-size:22px">Viewing pack: before you pay anything</div>
+      <div class="check" id="k1"><i>✓</i><div>Deposit no more than one month's rent; advance rent no more than one month (RTB)</div></div>
+      <div class="check" id="k2"><i>✓</i><div>Never pay before you have viewed the home</div></div>
+      <div class="check" id="k3"><i>✓</i><div>Ask for the BER: adverts must show it (SEAI)</div></div>
+      <div class="check" id="k4"><i>✓</i><div>The tenancy must be registered with the RTB</div></div>
+    </div>
+  </div>
+
+  <!-- 7 safe -->
+  <div class="v" id="v7">
+    <div class="card safe" id="sf1" style="top:20px"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0B5D56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><div class="t">Reads your alert emails only</div><div class="s">Listing sites' terms forbid automated access, so it never opens them</div></div></div>
+    <div class="card safe" id="sf2" style="top:250px"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0B5D56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><div><div class="t">Your data stays in your account</div><div class="s">Settings and history in your own private repository</div></div></div>
+    <div class="card safe" id="sf3" style="top:480px"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0B5D56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><path d="M3 3l18 18"/></svg></div><div><div class="t">No contact details stored</div><div class="s">Listing facts only; you send every enquiry yourself</div></div></div>
+  </div>
+</div>
+
+<div id="end">
+  <div class="n">Listing Alert Agent</div>
+  <div class="w">A free Claude plugin. Works in the Claude app and Claude Code.</div>
+  <div class="u">github.com/murugkarpratik44/listing-alert-agent</div>
+  <div class="fine">All listings, people and places shown are sample data.</div>
+</div>
+
+<script>
+if (location.search.includes("sq")) document.body.className = "sq";
+const $ = id => document.getElementById(id);
+const clamp = (x,a=0,b=1) => Math.max(a, Math.min(b, x));
+const ease = x => x<.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2;
+const fade = (t,a,b,d=.45) => clamp((t-a)/d) * (1 - clamp((t-(b-d))/d));
+function show(el,o,dy=12){ el.style.opacity=o; el.style.transform=`translateY(${(1-o)*dy}px)`; }
+
+// --- build scene 1: inbox
+const SUBS = [["MyHome.ie","New properties match your saved search"],["Daft.ie","New rentals in Maynooth and Leixlip"],["Daft.ie","New rentals in Celbridge"],["MyHome.ie","Price reduced on a property you saved"],["Daft.ie","New rentals in Dublin 15"],["MyHome.ie","New properties match your saved search"],["Daft.ie","New rentals in Kilcock"]];
+SUBS.forEach(([f,s],i)=>{ const d=document.createElement("div"); d.className="mail"; d.id="ml"+i; d.innerHTML=`<span class="dot"></span><span class="from">${f}</span><span class="sub">${s}</span>`; $("mails").appendChild(d); });
+const qEl = document.createElement("div"); qEl.className="q"; qEl.id="q"; qEl.textContent="7 emails, 9 listings, no answers yet."; $("v1").appendChild(qEl);
+
+// --- build scene 3: map + bars
+const P = [["Maynooth",53.381,-6.592,4,1.5],["Kilcock",53.400,-6.669,9,7],["Leixlip",53.366,-6.496,11,8.5],["Celbridge",53.340,-6.539,12,8],["Dublin 15",53.388,-6.385,22,16],["Naas",53.216,-6.666,28,27],["Newbridge",53.181,-6.797,36,36],["Dublin 8",53.338,-6.284,38,26]];
+const proj = (lat,lon) => [ (lon+6.86)/0.62*500, (53.46-lat)/0.32*680 ];
+const map = $("map");
+map.insertAdjacentHTML("beforeend", `<div style="position:absolute;left:18px;bottom:14px;font-size:16px;color:#7A8A85">Sample places · times from the travel table</div>`);
+(()=>{ const [x,y]=proj(53.3845,-6.6015); map.insertAdjacentHTML("beforeend", `<div class="pin work" id="pw" style="left:${x}px;top:${y}px"><div class="d"></div><div class="l" style="left:22px;top:-30px">Work</div></div>`); })();
+P.forEach(([n,lat,lon,m,km],i)=>{ const [x,y]=proj(lat,lon); const ok=m<=30; map.insertAdjacentHTML("beforeend", `<div class="pin" id="pp${i}" style="left:${x}px;top:${y}px"><div class="d" style="background:${ok?'#0E7A70':'#9AA7A3'}"></div><div class="l" style="${n==='Maynooth'?'top:8px':''}">${m} min</div></div>`);
+  $("bars").insertAdjacentHTML("beforeend", `<div class="bar" id="bb${i}"><div>${n}</div><div class="track"><div class="fill" id="bf${i}" style="background:${ok?'#0E7A70':'#9AA7A3'}">${m}</div><div class="limit" style="left:${30/40*100}%"></div></div></div>`); });
+$("bars").insertAdjacentHTML("afterbegin", `<div style="font-size:18px;color:#4A5A55;display:flex;justify-content:space-between"><span>Drive to work, minutes</span><span>limit 30</span></div>`);
+
+// --- build scene 4: run rows
+const ROWS = [
+ ["€2,100","Example Court, Maynooth","+ 4 min to work · + €100 under budget · 22% above area average","67","act",""],
+ ["€1,180","Sample Row, Celbridge","+ 12 min to work · 6% below area average · €80 over budget","57","str",""],
+ ["€650","Fable Square, Leixlip","Possible scam: 48% below the area average · verify before paying","40","flag",""],
+];
+ROWS.forEach(([p,a,r,f,k],i)=>{ const bg = k==="act"?"#DCEFEB":k==="str"?"#FBE9D0":"#F6E0DA"; const col = k==="act"?"#0B5D56":k==="str"?"#7A3E06":"#9A3412";
+  $("runrows").insertAdjacentHTML("beforeend", `<div class="card lst" id="rr${i}" style="top:${40+i*112}px"><div class="p">${p}</div><div><div class="a">${a}</div><div class="r">${r}</div></div><div class="fit" style="background:${bg};color:${col}">${f}<small>FIT</small></div></div>`); });
+const OUTS = ["<s>3 Mock Lane, Leixlip</s> &nbsp;studio: ruled out","<s>2 Trial Walk, Kilcock</s> &nbsp;ground floor: deal-breaker","<s>8 Test Park, Newbridge</s> &nbsp;outside your areas"];
+OUTS.forEach((o,i)=>$("runrows").insertAdjacentHTML("beforeend", `<div class="out" id="ro${i}" style="top:${420+i*70}px">${o}</div>`));
+
+const CAPS = [["c1",0,5.95],["c2",6.05,13.95],["c3",14.05,21.95],["c4",22.05,31.95],["c5",32.05,41.95],["c6",42.05,49.95],["c7",50.05,55.95]];
+const VIS  = [["v1",0,5.95],["v2",6.05,13.95],["v3",14.05,21.95],["v4",22.05,31.95],["v5",32.05,41.95],["v6",42.05,49.95],["v7",50.05,55.95]];
+window.DURATION = 60;
+window.render = function(t){
+  CAPS.forEach(([id,a,b])=>show($(id), a===0 ? 1-clamp((t-(b-.45))/.45) : fade(t,a,b), 14));
+  VIS.forEach(([id,a,b])=>{ $(id).style.opacity = a===0 ? 1-clamp((t-(b-.45))/.45) : fade(t,a,b); });
+  $("end").style.opacity = clamp((t-56)/.5);
+  // 1 inbox: mails drop in and stack
+  SUBS.forEach((_,i)=>{ const el=$("ml"+i); const s=clamp((t-0.15-i*0.38)/.35); el.style.opacity=s; el.style.top=(20+i*76 - (1-s)*30)+"px"; el.style.zIndex=i; });
+  show($("q"), clamp((t-3.9)/.4));
+  // 2 setup
+  ["qa1","qa2","qa3"].forEach((id,i)=>show($(id), clamp((t-6.5-i*2.2)/.4), 16));
+  // 3 travel
+  show($("pw"), clamp((t-14.4)/.3), 6);
+  P.forEach((_,i)=>{ show($("pp"+i), clamp((t-15-i*.35)/.3), 6); show($("bb"+i), clamp((t-15-i*.35)/.3), 6);
+    $("bf"+i).style.width = (P[i][3]/40*100*ease(clamp((t-15.1-i*.35)/.6)))+"%"; });
+  show($("tnote"), clamp((t-18.6)/.4));
+  // 4 run
+  ROWS.forEach((_,i)=>show($("rr"+i), clamp((t-23-i*.9)/.4), 24));
+  OUTS.forEach((_,i)=>show($("ro"+i), clamp((t-26.4-i*.7)/.4), 10));
+  // 5 alert: notification, then scroll the email on the phone
+  show($("notif"), clamp((t-33)/.4)*(1-clamp((t-36.6)/.4)), -20);
+  const ph=$("pimg"); const h=ph.naturalHeight*(332/(ph.naturalWidth||390)); const maxY=Math.max(0,h-692);
+  ph.style.transform=`translateY(${-ease(clamp((t-37)/4.6))*Math.min(maxY,1250)}px)`;
+  // 6 decide
+  ["k1","k2","k3","k4"].forEach((id,i)=>show($(id), clamp((t-45.2-i*.8)/.35), 8));
+  // 7 safe
+  ["sf1","sf2","sf3"].forEach((id,i)=>show($(id), clamp((t-50.4-i*1.1)/.4), 16));
+};
+window.render(0);
+</script>
+</body>
+</html>

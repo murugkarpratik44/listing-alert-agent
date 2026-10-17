@@ -1,0 +1,312 @@
+location,property_type,bedrooms,value,n_periods,latest_quarter_value
+Dublin,All property types,1,1714,4,1741
+Dublin,Apartment,1,1838,4,1864
+Dublin,All property types,2,2224,4,2253
+Dublin,Apartment,2,2253,4,2284
+"Balbriggan, Dublin",All property types,1,1222,4,1265
+"Balbriggan, Dublin",Apartment,1,1242,4,1291
+"Balbriggan, Dublin",All property types,2,1662,4,1719
+"Balbriggan, Dublin",Apartment,2,1637,4,1686
+"Blackrock, Dublin",All property types,1,2136,4,2223
+"Blackrock, Dublin",Apartment,1,2170,4,2259
+"Blackrock, Dublin",All property types,2,2521,4,2616
+"Blackrock, Dublin",Apartment,2,2547,4,2656
+"Booterstown, Dublin",All property types,2,2319,1,
+"Dalkey, Dublin",All property types,1,2251,4,2206
+"Dalkey, Dublin",Apartment,1,2223,4,2158
+"Dalkey, Dublin",All property types,2,2790,4,2739
+"Dalkey, Dublin",Apartment,2,2890,4,2845
+"Donabate, Dublin",All property types,2,1805,4,1805
+"Donabate, Dublin",Apartment,2,1824,2,1852
+"Dun Laoghaire, Dublin",All property types,1,1698,4,1709
+"Dun Laoghaire, Dublin",Apartment,1,1819,4,1818
+"Dun Laoghaire, Dublin",All property types,2,2262,4,2265
+"Dun Laoghaire, Dublin",Apartment,2,2280,4,2282
+"Glenageary, Dublin",All property types,2,2510,4,2550
+"Glenageary, Dublin",Apartment,2,2555,4,2572
+"Howth, Dublin",All property types,1,1944,3,2059
+"Howth, Dublin",Apartment,1,1950,3,2063
+"Howth, Dublin",All property types,2,2346,4,2520
+"Howth, Dublin",Apartment,2,2367,4,2546
+"Killiney, Dublin",All property types,1,2119,2,2142
+"Killiney, Dublin",Apartment,1,2193,1,2193
+"Killiney, Dublin",All property types,2,2515,3,2548
+"Killiney, Dublin",Apartment,2,2648,3,2651
+"Lucan, Dublin",All property types,1,1793,4,1792
+"Lucan, Dublin",Apartment,1,1837,4,1835
+"Lucan, Dublin",All property types,2,2155,4,2141
+"Lucan, Dublin",Apartment,2,2171,4,2159
+"Malahide, Dublin",All property types,1,1795,4,1901
+"Malahide, Dublin",Apartment,1,1863,4,1959
+"Malahide, Dublin",All property types,2,2177,4,2192
+"Malahide, Dublin",Apartment,2,2173,4,2185
+"Monkstown, Dublin",All property types,1,1469,4,1497
+"Monkstown, Dublin",All property types,2,2061,4,2105
+"Monkstown, Dublin",Apartment,2,2001,4,2030
+"Portmarnock, Dublin",All property types,2,1994,4,2025
+"Portmarnock, Dublin",Apartment,2,1971,4,2008
+"Rathcoole, Dublin",All property types,2,1899,2,1860
+"Saggart, Dublin",All property types,2,1863,4,1877
+"Saggart, Dublin",Apartment,2,1866,4,1881
+"Skerries, Dublin",All property types,2,1764,2,1757
+"Stillorgan, Dublin",All property types,1,2076,4,2100
+"Stillorgan, Dublin",Apartment,1,2085,4,2108
+"Stillorgan, Dublin",All property types,2,2417,4,2438
+"Stillorgan, Dublin",Apartment,2,2429,4,2453
+"Swords, Dublin",All property types,1,1397,4,1433
+"Swords, Dublin",Apartment,1,1419,4,1435
+"Swords, Dublin",All property types,2,1802,4,1848
+"Swords, Dublin",Apartment,2,1808,4,1847
+"I.F.S.C., Dublin 1",All property types,1,1847,4,1854
+"I.F.S.C., Dublin 1",Apartment,1,1847,4,1854
+"I.F.S.C., Dublin 1",All property types,2,2296,4,2344
+"I.F.S.C., Dublin 1",Apartment,2,2296,4,2344
+"Parnell Street, Dublin 1",All property types,1,1687,3,1716
+"Parnell Street, Dublin 1",Apartment,1,1687,3,1716
+"Spencer Dock, Dublin 1",All property types,2,2417,4,2447
+"Spencer Dock, Dublin 1",Apartment,2,2417,4,2447
+"Summerhill, Dublin 1",All property types,1,1442,3,1470
+"Summerhill, Dublin 1",Apartment,1,1499,3,1509
+"Clonliffe, Dublin 3",All property types,1,1470,4,1505
+"Clonliffe, Dublin 3",Apartment,1,1566,3,1575
+"Clontarf, Dublin 3",All property types,1,1521,4,1540
+"Clontarf, Dublin 3",Apartment,1,1633,4,1661
+"Clontarf, Dublin 3",All property types,2,2102,4,2148
+"Clontarf, Dublin 3",Apartment,2,2086,4,2134
+"Drumcondra, Dublin 3",All property types,1,1295,4,1299
+"Drumcondra, Dublin 3",Apartment,1,1502,4,1501
+"Drumcondra, Dublin 3",All property types,2,1988,4,2025
+"Drumcondra, Dublin 3",Apartment,2,2000,4,2024
+"East Wall, Dublin 3",All property types,1,1623,1,1623
+"East Wall, Dublin 3",Apartment,1,1611,1,1611
+"East Wall, Dublin 3",All property types,2,2058,4,2086
+"East Wall, Dublin 3",Apartment,2,2144,3,2177
+"Fairview, Dublin 3",All property types,1,1472,4,1443
+"Fairview, Dublin 3",Apartment,1,1586,4,1551
+"Fairview, Dublin 3",All property types,2,2131,3,2142
+"Ballsbridge, Dublin 4",All property types,1,1763,4,1782
+"Ballsbridge, Dublin 4",Apartment,1,1803,4,1837
+"Ballsbridge, Dublin 4",All property types,2,2648,4,2795
+"Ballsbridge, Dublin 4",Apartment,2,2670,4,2831
+"Donnybrook, Dublin 4",All property types,1,1628,4,1668
+"Donnybrook, Dublin 4",Apartment,1,1776,3,1790
+"Donnybrook, Dublin 4",All property types,2,2372,4,2450
+"Donnybrook, Dublin 4",Apartment,2,2375,4,2472
+"Merrion, Dublin 4",All property types,1,1880,2,1892
+"Merrion, Dublin 4",Apartment,1,1891,1,1891
+"Merrion, Dublin 4",All property types,2,2582,2,2613
+"Merrion, Dublin 4",Apartment,2,2650,1,2650
+"Pembroke, Dublin 4",All property types,2,2649,4,2681
+"Pembroke, Dublin 4",Apartment,2,2625,4,2667
+"Ringsend, Dublin 4",All property types,2,2181,4,2183
+"Ringsend, Dublin 4",Apartment,2,2183,4,2190
+"Sandymount, Dublin 4",All property types,1,1777,4,1796
+"Sandymount, Dublin 4",Apartment,1,1867,4,1905
+"Sandymount, Dublin 4",All property types,2,2302,4,2358
+"Sandymount, Dublin 4",Apartment,2,2213,4,2242
+"Raheny, Dublin 5",All property types,1,1561,4,1574
+"Raheny, Dublin 5",All property types,2,2011,4,2029
+"Raheny, Dublin 5",Apartment,2,1994,4,2021
+"Harolds Cross, Dublin 6",All property types,1,1576,4,1612
+"Harolds Cross, Dublin 6",All property types,2,2249,4,2267
+"Milltown, Dublin 6",All property types,1,1857,4,1898
+"Milltown, Dublin 6",Apartment,1,1859,4,1892
+"Milltown, Dublin 6",All property types,2,2353,4,2410
+"Milltown, Dublin 6",Apartment,2,2376,4,2435
+"Ranelagh, Dublin 6",All property types,1,1576,4,1590
+"Ranelagh, Dublin 6",Apartment,1,1722,4,1725
+"Ranelagh, Dublin 6",All property types,2,2282,4,2327
+"Ranelagh, Dublin 6",Apartment,2,2234,4,2261
+"Rathgar, Dublin 6",All property types,1,1466,4,1496
+"Rathgar, Dublin 6",Apartment,1,1539,4,1609
+"Rathgar, Dublin 6",All property types,2,2020,4,2198
+"Rathgar, Dublin 6",Apartment,2,2096,3,2323
+"Rathmines, Dublin 6",All property types,1,1401,4,1418
+"Rathmines, Dublin 6",Apartment,1,1567,4,1585
+"Rathmines, Dublin 6",All property types,2,2025,4,1989
+"Rathmines, Dublin 6",Apartment,2,2047,4,1984
+"Terenure, Dublin 6W",All property types,1,1550,4,1612
+"Terenure, Dublin 6W",Apartment,1,1698,4,1744
+"Terenure, Dublin 6W",All property types,2,2069,4,2073
+"Terenure, Dublin 6W",Apartment,2,2065,4,2090
+"Cabra, Dublin 7",All property types,1,1278,4,1293
+"Cabra, Dublin 7",All property types,2,1927,4,1980
+"North Circular Road, Dublin 7",All property types,1,1443,4,1459
+"North Circular Road, Dublin 7",All property types,2,2198,3,2264
+"Smithfield, Dublin 7",All property types,1,1663,4,1701
+"Smithfield, Dublin 7",Apartment,1,1677,4,1721
+"Smithfield, Dublin 7",All property types,2,2236,4,2199
+"Smithfield, Dublin 7",Apartment,2,2236,4,2199
+"Stoneybatter, Dublin 7",All property types,2,1906,4,1926
+"Cork Street, Dublin 8",All property types,1,1584,3,1582
+"Cork Street, Dublin 8",All property types,2,1979,2,1976
+"Inchicore, Dublin 8",All property types,1,1521,4,1555
+"Inchicore, Dublin 8",Apartment,1,1551,4,1569
+"Inchicore, Dublin 8",All property types,2,1895,4,1939
+"Inchicore, Dublin 8",Apartment,2,1841,4,1878
+"Islandbridge, Dublin 8",All property types,1,1808,4,1821
+"Islandbridge, Dublin 8",Apartment,1,1808,4,1821
+"Islandbridge, Dublin 8",All property types,2,2128,4,2145
+"Islandbridge, Dublin 8",Apartment,2,2128,4,2145
+"Kilmainham , Dublin 8",All property types,1,1520,4,1522
+"Kilmainham , Dublin 8",Apartment,1,1529,4,1530
+"Kilmainham , Dublin 8",All property types,2,2008,4,2057
+"Kilmainham , Dublin 8",Apartment,2,1989,4,2031
+"Rialto, Dublin 8",All property types,1,1501,4,1480
+"Rialto, Dublin 8",Apartment,1,1586,3,1561
+"Rialto, Dublin 8",All property types,2,1912,4,1912
+"Rialto, Dublin 8",Apartment,2,1866,4,1873
+"South Circular Road, Dublin 8",All property types,1,1460,4,1479
+"South Circular Road, Dublin 8",Apartment,1,1552,4,1578
+"South Circular Road, Dublin 8",All property types,2,2108,4,2096
+"South Circular Road, Dublin 8",Apartment,2,2033,4,1995
+"Glasnevin, Dublin 9",All property types,1,1434,4,1485
+"Glasnevin, Dublin 9",Apartment,1,1568,4,1590
+"Glasnevin, Dublin 9",All property types,2,1960,4,2033
+"Glasnevin, Dublin 9",Apartment,2,1961,4,2058
+"Santry, Dublin 9",All property types,1,1655,4,1695
+"Santry, Dublin 9",Apartment,1,1707,4,1732
+"Santry, Dublin 9",All property types,2,2064,4,2078
+"Santry, Dublin 9",Apartment,2,2062,4,2075
+"Finglas, Dublin 11",All property types,1,1578,4,1622
+"Finglas, Dublin 11",Apartment,1,1634,4,1688
+"Finglas, Dublin 11",All property types,2,1927,4,1986
+"Finglas, Dublin 11",Apartment,2,1922,4,1981
+"Crumlin, Dublin 12",All property types,1,1433,3,1458
+"Crumlin, Dublin 12",All property types,2,1937,4,2001
+"Drimnagh, Dublin 12",All property types,2,1965,4,1982
+"Kimmage, Dublin 12",All property types,1,1456,3,1493
+"Kimmage, Dublin 12",All property types,2,1999,4,2005
+"Clongriffin, Dublin 13",All property types,1,1620,3,1649
+"Clongriffin, Dublin 13",Apartment,1,1620,3,1649
+"Clongriffin, Dublin 13",All property types,2,1997,4,2047
+"Clongriffin, Dublin 13",Apartment,2,1995,4,2051
+"Churchtown, Dublin 14",All property types,2,2553,4,2544
+"Churchtown, Dublin 14",Apartment,2,2571,4,2568
+"Clonskeagh, Dublin 14",All property types,2,2052,4,2068
+"Ashtown, Dublin 15",All property types,2,1976,4,1983
+"Ashtown, Dublin 15",Apartment,2,1973,4,1983
+"Blanchardstown, Dublin 15",All property types,2,1827,4,1874
+"Blanchardstown, Dublin 15",Apartment,2,1835,4,1882
+"Castleknock, Dublin 15",All property types,2,1996,4,2034
+"Castleknock, Dublin 15",Apartment,2,2041,4,2069
+"Clonsilla, Dublin 15",All property types,2,1899,4,1883
+"Clonsilla, Dublin 15",Apartment,2,1945,3,
+"Porterstown, Dublin 15",All property types,2,1778,1,
+"Porterstown, Dublin 15",Apartment,2,1778,1,
+"Royal Canal Park, Dublin 15",All property types,1,1557,1,1557
+"Royal Canal Park, Dublin 15",Apartment,1,1557,1,1557
+"Royal Canal Park, Dublin 15",All property types,2,2176,4,2158
+"Royal Canal Park, Dublin 15",Apartment,2,2176,4,2158
+"Ballinteer, Dublin 16",All property types,2,2054,1,2054
+"Dundrum, Dublin 16",All property types,1,2044,4,2027
+"Dundrum, Dublin 16",Apartment,1,2054,4,2044
+"Dundrum, Dublin 16",All property types,2,2315,4,2289
+"Dundrum, Dublin 16",Apartment,2,2329,4,2305
+"Rathfarnham, Dublin 16",All property types,1,1568,4,1580
+"Rathfarnham, Dublin 16",Apartment,1,1606,2,
+"Rathfarnham, Dublin 16",All property types,2,1982,4,2020
+"Rathfarnham, Dublin 16",Apartment,2,1990,4,2029
+"Malahide Road, Dublin 17",All property types,2,1924,4,1934
+"Malahide Road, Dublin 17",Apartment,2,1932,4,1957
+"Cabinteely, Dublin 18",All property types,2,2070,4,2078
+"Cabinteely, Dublin 18",Apartment,2,2073,4,2073
+"Carrickmines, Dublin 18",All property types,2,2143,4,2176
+"Carrickmines, Dublin 18",Apartment,2,2142,4,2176
+"Leopardstown, Dublin 18",All property types,1,1846,4,1872
+"Leopardstown, Dublin 18",Apartment,1,1849,4,1885
+"Leopardstown, Dublin 18",All property types,2,2125,4,2147
+"Leopardstown, Dublin 18",Apartment,2,2122,4,2145
+"Sandyford, Dublin 18",All property types,1,2014,4,2027
+"Sandyford, Dublin 18",Apartment,1,2022,4,2030
+"Sandyford, Dublin 18",All property types,2,2368,4,2322
+"Sandyford, Dublin 18",Apartment,2,2369,4,2321
+"Stepaside, Dublin 18",All property types,2,1965,4,1995
+"Stepaside, Dublin 18",Apartment,2,1978,4,2012
+"Chapelizod, Dublin 20",All property types,2,1842,2,1876
+"Clondalkin, Dublin 22",All property types,1,1382,4,1385
+"Clondalkin, Dublin 22",Apartment,1,1454,4,1487
+"Clondalkin, Dublin 22",All property types,2,1761,4,1794
+"Clondalkin, Dublin 22",Apartment,2,1761,4,1798
+"Ballycullen, Dublin 24",All property types,2,1834,1,
+"Ballycullen, Dublin 24",Apartment,2,1834,1,
+"Citywest, Dublin 24",All property types,1,1798,4,1772
+"Citywest, Dublin 24",Apartment,1,1798,4,1771
+"Citywest, Dublin 24",All property types,2,2146,4,2120
+"Citywest, Dublin 24",Apartment,2,2145,4,2118
+"Tallaght, Dublin 24",All property types,1,1400,4,1432
+"Tallaght, Dublin 24",Apartment,1,1417,4,1438
+"Tallaght, Dublin 24",All property types,2,1789,4,1807
+"Tallaght, Dublin 24",Apartment,2,1800,4,1812
+Galway,All property types,1,1086,4,1110
+Galway,Apartment,1,1118,4,1133
+Galway,All property types,2,1463,4,1499
+Galway,Apartment,2,1504,4,1533
+"Ballinasloe, Galway",All property types,2,973,3,1012
+Kildare,All property types,1,1215,4,1244
+Kildare,Apartment,1,1252,4,1278
+Kildare,All property types,2,1549,4,1592
+Kildare,Apartment,2,1565,4,1610
+Kildare Town,All property types,2,1311,4,1362
+Kildare Town,Apartment,2,1311,4,1372
+"Athy, Kildare",All property types,2,1230,4,1268
+"Athy, Kildare",Apartment,2,1211,4,1241
+"Celbridge, Kildare",All property types,2,1626,4,1685
+"Celbridge, Kildare",Apartment,2,1696,4,1750
+"Clane, Kildare",All property types,2,1537,4,1567
+"Clane, Kildare",Apartment,2,1527,4,1549
+"Kilcock, Kildare",All property types,2,1451,4,1501
+"Kilcock, Kildare",Apartment,2,1462,3,1488
+"Leixlip, Kildare",All property types,1,1429,1,1429
+"Leixlip, Kildare",All property types,2,1644,4,1684
+"Leixlip, Kildare",Apartment,2,1718,4,1768
+"Maynooth, Kildare",All property types,1,1226,4,1259
+"Maynooth, Kildare",Apartment,1,1319,4,1366
+"Maynooth, Kildare",All property types,2,1718,4,1733
+"Maynooth, Kildare",Apartment,2,1715,4,1729
+"Naas, Kildare",All property types,1,1363,4,1377
+"Naas, Kildare",Apartment,1,1384,4,1412
+"Naas, Kildare",All property types,2,1725,4,1793
+"Naas, Kildare",Apartment,2,1749,4,1817
+"Newbridge, Kildare",All property types,1,1059,4,1095
+"Newbridge, Kildare",Apartment,1,1061,4,1100
+"Newbridge, Kildare",All property types,2,1329,4,1373
+"Newbridge, Kildare",Apartment,2,1307,4,1345
+"Sallins, Kildare",All property types,2,1525,3,1515
+"Sallins, Kildare",Apartment,2,1521,3,1511
+Longford,All property types,1,878,4,874
+Longford,Apartment,1,879,4,900
+Longford,All property types,2,1059,4,1071
+Longford,Apartment,2,1088,4,1095
+Longford Town,All property types,1,924,3,
+Longford Town,Apartment,1,900,3,
+Longford Town,All property types,2,1115,4,1124
+Longford Town,Apartment,2,1121,4,1130
+"Ballymahon, Longford",All property types,2,1110,1,1110
+Offaly,All property types,1,842,4,877
+Offaly,Apartment,1,845,4,873
+Offaly,All property types,2,1090,4,1122
+Offaly,Apartment,2,1067,4,1108
+"Birr, Offaly",All property types,2,960,3,1001
+"Edenderry, Offaly",All property types,2,1265,4,1239
+"Edenderry, Offaly",Apartment,2,1117,1,
+"Tullamore, Offaly",All property types,2,1156,4,1213
+"Tullamore, Offaly",Apartment,2,1159,2,1179
+Roscommon,All property types,1,776,4,797
+Roscommon,Apartment,1,796,4,810
+Roscommon,All property types,2,993,4,1028
+Roscommon,Apartment,2,1084,4,1097
+Roscommon Town,All property types,2,950,4,987
+"Castlerea, Roscommon",All property types,2,936,2,951
+Westmeath,All property types,1,900,4,924
+Westmeath,Apartment,1,950,4,979
+Westmeath,All property types,2,1169,4,1203
+Westmeath,Apartment,2,1181,4,1211
+"Athlone, Westmeath",All property types,1,996,4,1046
+"Athlone, Westmeath",Apartment,1,1005,4,1051
+"Athlone, Westmeath",All property types,2,1203,4,1219
+"Athlone, Westmeath",Apartment,2,1219,4,1236
+"Mullingar, Westmeath",All property types,1,793,4,796
+"Mullingar, Westmeath",Apartment,1,849,3,867
+"Mullingar, Westmeath",All property types,2,1142,4,1185
+"Mullingar, Westmeath",Apartment,2,1164,4,1211

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+*.tmp
+/tmp/
+listing-alert-agent/evals/results/
+
+# Author-only list of personal details the checks look for; never committed
+tools/personal-terms.txt

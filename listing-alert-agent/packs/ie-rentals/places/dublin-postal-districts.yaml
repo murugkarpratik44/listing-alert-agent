@@ -1,0 +1,24 @@
+# Dublin postal districts, for search_places in config/places.yaml.
+# Dublin 6W is a separate district from Dublin 6. There are no districts 19, 21 or 23.
+- {name: Dublin 1, region: Dublin}
+- {name: Dublin 2, region: Dublin}
+- {name: Dublin 3, region: Dublin}
+- {name: Dublin 4, region: Dublin}
+- {name: Dublin 5, region: Dublin}
+- {name: Dublin 6, region: Dublin}
+- {name: Dublin 6W, region: Dublin}
+- {name: Dublin 7, region: Dublin}
+- {name: Dublin 8, region: Dublin}
+- {name: Dublin 9, region: Dublin}
+- {name: Dublin 10, region: Dublin}
+- {name: Dublin 11, region: Dublin}
+- {name: Dublin 12, region: Dublin}
+- {name: Dublin 13, region: Dublin}
+- {name: Dublin 14, region: Dublin}
+- {name: Dublin 15, region: Dublin}
+- {name: Dublin 16, region: Dublin}
+- {name: Dublin 17, region: Dublin}
+- {name: Dublin 18, region: Dublin}
+- {name: Dublin 20, region: Dublin}
+- {name: Dublin 22, region: Dublin}
+- {name: Dublin 24, region: Dublin}
